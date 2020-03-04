@@ -3,43 +3,30 @@
 
 int	main(int argc, char **argv)
 {
-	char		*line;
 	t_struct	ps;
-	int			*tmp;
-	int		nb;
+	int			*instr_stock;
 
-	(void)argc;
-	(void)argv;
-	line = NULL;
-	tmp = NULL;
 	ps.size = 0;
 	ps.stack_a = NULL;
 	ps.stack_b = NULL;
-	while (get_next_line(1, &line) == 1)
+	instr_stock = NULL;
+	if (argc == 1)
 	{
-		if (!check_line(line))
-		{
-			free(ps.stack_a);
-			ps.stack_a = NULL;
-			return (0);
-		}
-		ps.size++;
-		if (!(tmp = (int*)malloc(sizeof(int) * ps.size)))
-			return (0);
-		if (ps.stack_a)
-			ft_memcpy(tmp, ps.stack_a, ps.size * sizeof(int));
-		free(ps.stack_a);
-		nb = ft_atoi(line);
-		if ((line[0] == '-' && nb > 0) 
-			|| ((line[0] == '+' || ft_isdigit(line[0])) && nb < 0))
-			return (0);
-		tmp[ps.size - 1] = nb;
-		free(line);
-		ps.stack_a = tmp;
+		// while (1)
+		// 	;
+		return (0);
 	}
-	print_stack_a(&ps);
+	if (!check_args(argc, argv, &ps) || !check_instr(instr_stock))
+	{
+		write(2, "Error\n", 6);
+		free(ps.stack_a);
+		// while (1)
+		// 	;
+		return (0);
+	}
+	// print_stack_a(&ps);
 	if (!(ps.stack_b = (int*)malloc(sizeof(int) * ps.size)))
-			return (0);
+		return (0);
 	ft_bzero(ps.stack_b, ps.size * sizeof(int));
 	free(ps.stack_a);
 	ps.stack_a = NULL;
@@ -47,27 +34,105 @@ int	main(int argc, char **argv)
 	ps.stack_b = NULL;
 	// free(line);
 	// line = NULL;
+	// while (1)
+	// 	;
 	return (0);
 }
 
-int				check_line(char *line)
+int				check_args(int argc, char **argv, t_struct *ps)
+{
+	int i;
+	int	nb;
+
+	i = 1;
+	nb = 0;
+	while (i < argc)
+	{
+		if (!check_line(ps, argv[i], &nb))
+		{
+			free(ps->stack_a);
+			ps->stack_a = NULL;
+			return (0);
+		}
+		if (!ft_realloc(&(ps->stack_a), ++ps->size, nb))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int				check_instr(int *instr_stock)
+{
+	int			i;
+	int			size;
+	char		*line;
+	static char	*instr[] = {"sa", "sb", "ss", "pa", "pb", "ra",
+		"rb", "rr", "rra", "rrb", "rrr"};
+
+	line = NULL;
+	size = 0;
+	while (get_next_line(1, &line) == 1)
+	{
+		i = 0;
+		while (i < 11 && ft_strcmp(line, instr[i]))
+			i++;
+		free(line);
+		line = NULL;
+		if (i == 11)
+			return (0);
+		if (!ft_realloc(&instr_stock, ++size, i))
+			return (0);
+	}
+	i = 0;
+	// while (i < size)
+	// {
+	// 	printf("%s\n", instr[instr_stock[i]]);
+	// 	i++;
+	// }
+	return (1);
+}
+
+int				ft_realloc(int **tab, int size, int to_add)
+{
+	int			*tmp;
+
+	tmp = NULL;
+	if (!(tmp = (int*)malloc(sizeof(int) * size)))
+		return (0);
+	if (*tab)
+		ft_memcpy(tmp, *tab, size * sizeof(int));
+	free(*tab);
+	tmp[size - 1] = to_add;
+	*tab = tmp;
+	return (1);
+}
+
+int				check_line(t_struct *ps, char *arg, int *nb)
 {
 	int i;
 
 	i = 0;
-	if (!line[0])
+	if (!arg[0])
 		return (0);
-	while (line[i])
+	while (arg[i])
 	{
-		if (ft_isdigit(line[i]) || line[i] == '-' || line[i] == '+')
+		if (ft_isdigit(arg[i]) || arg[i] == '-' || arg[i] == '+')
 			i++;
 		else
 			return (0);
 	}
-	// if (9 <= i)
-	// {
-	// 	if (line[0] != '-' && )
-	// }
+	*nb = ft_atoi(arg);
+	if ((arg[0] == '-' && *nb > 0) 
+			|| ((arg[0] == '+' || ft_isdigit(arg[0])) && *nb < 0))
+		return (0);
+	i = 0;
+	while (i < ps->size)
+	{
+		if (*nb != (ps->stack_a)[i])
+			i++;
+		else
+			return (0);
+	}
 	return (1);
 }
 
@@ -76,10 +141,10 @@ void			print_stack_a(t_struct *ps)
 	int i;
 
 	i = 0;
-	printf("size = %d\n", ps->size);
+	printf("\n\nprint_stack_a\n");
 	while (i < ps->size)
 	{
-		printf("%d\n", ps->stack_a[i]);
+		printf("%d\n", (ps->stack_a)[i]);
 		i++;
 	}
 }
