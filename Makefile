@@ -11,7 +11,7 @@ LIB_FLAGS = -L $(LIB_FOLDER) -lft
 LIB = $(addprefix $(LIB_FOLDER), $(LIB_NAME))
 
 SRC_FOLDER = ./src/
-SRC_FILES = main_checker.c
+SRC_FILES = apply_instr.c ft_p.c ft_r.c ft_rr.c ft_s.c main_checker.c parsing.c
 SRC = $(addprefix $(SRC_FOLDER), $(SRC_FILES))
 
 HDR_FOLDER = ./inc/
