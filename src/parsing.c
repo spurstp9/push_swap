@@ -39,7 +39,7 @@ int				check_instr(t_struct *ps)
 		line = NULL;
 		if (i == 11)
 			return (0);
-		if (!ft_realloc(&(ps->instr_stock), ++ps->instr_nb, i))
+		if (!ft_realloc(&(ps->instr_stock.tab), ++ps->instr_stock.size, i))
 			return (0);
 	}
 	i = 0;

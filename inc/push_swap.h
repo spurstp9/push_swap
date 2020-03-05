@@ -5,24 +5,26 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
-# define SA 1
-# define SB 2
-# define SS 3
-# define PA 4
-# define PB 5
-# define RA 6
-# define RB 7
-# define RR 8
-# define RRA 9
-# define RRB 10
-# define RRR 11
+# define SA 0
+# define SB 1
+# define SS 2
+# define PA 3
+# define PB 4
+# define RA 5
+# define RB 6
+# define RR 7
+# define RRA 8
+# define RRB 9
+# define RRR 10
+
+# include <stdio.h>
 
 typedef struct	s_stack
 {
 	int			*tab;
 	int			begin;
 	int			size;
-};
+}				t_stack;
 
 typedef struct	s_struct
 {
@@ -32,14 +34,16 @@ typedef struct	s_struct
 }				t_struct;
 
 void			print_stack_a(t_struct *ps);
+void			print_stack_b(t_struct *ps);
 
 int				apply_instr(t_struct *ps);
-void			apply_p(t_stack dest, t_stack source);
-void			apply_r(t_stack stack);
-void			apply_rr(t_stack stack);
-void			apply_s(t_stack stack);
+void			apply_p(t_stack *dest, t_stack *source);
+void			apply_r(t_stack *stack);
+void			apply_rr(t_stack *stack);
+void			apply_s(t_stack *stack);
 int				check_args(int argc, char **argv, t_struct *ps);
 int				check_instr(t_struct *ps);
+int				check_order(t_stack stack_a);
 int				check_line(t_struct *ps, char *arg, int *nb);
 void			ft_init(t_struct *ps);
 int				ft_realloc(int **tab, int size, int to_add);

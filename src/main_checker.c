@@ -1,5 +1,4 @@
 #include "../inc/push_swap.h"
-#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
@@ -7,8 +6,8 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 	{
-		// while (1)
-		// 	;
+		while (1)
+			;
 		return (0);
 	}
 	ft_init(&ps);
@@ -16,8 +15,8 @@ int	main(int argc, char **argv)
 	{
 		write(2, "Error\n", 6);
 		free(ps.stack_a.tab);
-		// while (1)
-		// 	;
+		while (1)
+			;
 		return (0);
 	}
 	// print_stack_a(&ps);
@@ -25,7 +24,14 @@ int	main(int argc, char **argv)
 		return (0);
 	ft_bzero(ps.stack_b.tab, ps.stack_a.size * sizeof(int));
 	ps.stack_b.size = ps.stack_a.size;
+	ps.stack_b.begin = ps.stack_b.size;
 	apply_instr(&ps);
+	// print_stack_a(&ps);
+	// print_stack_b(&ps);
+	if (!check_order(ps.stack_a))
+		write(1, "KO\n", 3);
+	else
+		write(1, "OK\n", 3);
 	free(ps.stack_a.tab);
 	ps.stack_a.tab = NULL;
 	free(ps.stack_b.tab);
@@ -34,8 +40,8 @@ int	main(int argc, char **argv)
 	ps.instr_stock.tab = NULL;
 	// free(line);
 	// line = NULL;
-	// while (1)
-	// 	;
+	while (1)
+		;
 	return (0);
 }
 
@@ -56,11 +62,28 @@ void			print_stack_a(t_struct *ps)
 {
 	int i;
 
-	i = 0;
-	printf("\n\nprint_stack_a\n");
+	i = ps->stack_a.begin;
+	printf("begin = %d\n", i);
+	printf("\n\nprint_stack_a size = %d\n", ps->stack_a.size);
 	while (i < ps->stack_a.size)
 	{
 		printf("%d\n", (ps->stack_a.tab)[i]);
 		i++;
 	}
+	printf("\n");
+}
+
+void			print_stack_b(t_struct *ps)
+{
+	int i;
+
+	i = ps->stack_b.begin;
+	printf("begin = %d\n", i);
+	printf("\n\nprint_stack_b size = %d\n", ps->stack_b.size);
+	while (i < ps->stack_b.size)
+	{
+		printf("%d\n", (ps->stack_b.tab)[i]);
+		i++;
+	}
+	printf("\n");
 }

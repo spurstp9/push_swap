@@ -3,22 +3,22 @@
 void	ft_rr(t_struct *ps, int instr_nb)
 {
 	if (instr_nb == RRA || instr_nb == RRR)
-		apply_rr(ps->stack_a);
+		apply_rr(&ps->stack_a);
 	if (instr_nb == RRB || instr_nb == RRR)
-		apply_rr(ps->stack_b);
+		apply_rr(&ps->stack_b);
 }
 
-void	apply_rr(t_stack stack)
+void	apply_rr(t_stack *stack)
 {
 	int i;
 	int bottom;
 
-	i = stack.size;
-	bottom = stack[i];
-	while (stack.begin < i)
+	i = stack->size - 1;
+	bottom = stack->tab[i];
+	while (stack->begin < i)
 	{
-		stack[i] = stack[i - 1];
-		stack[i - 1] = bottom;
+		stack->tab[i] = stack->tab[i - 1];
+		stack->tab[i - 1] = bottom;
 		i--;
 	}
 }
