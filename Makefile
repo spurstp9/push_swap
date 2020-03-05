@@ -1,34 +1,50 @@
 CHECKER_NAME = checker
 
+PUSH_SWAP_NAME = push_swap
+
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
 LIB_FOLDER = ./libft/
 LIB_INC = ./libft/includes
-LIB_NAME = ./libft/includes
+LIB_NAME = libft.a
 LIB_FLAGS = -L $(LIB_FOLDER) -lft
 LIB = $(addprefix $(LIB_FOLDER), $(LIB_NAME))
 
 SRC_FOLDER = ./src/
-SRC_FILES = apply_instr.c check_order.c ft_p.c ft_r.c ft_rr.c ft_s.c main_checker.c parsing.c
-SRC = $(addprefix $(SRC_FOLDER), $(SRC_FILES))
+
+CHECKER_SRC_FILES = apply_instr.c check_order.c ft_p.c ft_r.c ft_rr.c ft_s.c main_checker.c parsing.c utils.c
+CHECKER_SRC = $(addprefix $(SRC_FOLDER), $(CHECKER_SRC_FILES))
+
+PUSH_SWAP_SRC_FILES = apply_instr.c check_order.c ft_p.c ft_r.c ft_rr.c ft_s.c main_push_swap.c parsing.c utils.c
+PUSH_SWAP_SRC = $(addprefix $(SRC_FOLDER), $(PUSH_SWAP_SRC_FILES))
 
 HDR_FOLDER = ./inc/
 HDR_FILES = push_swap.h
 HDR = $(addprefix $(HDR_FOLDER), $(HDR_FILES))
 
 OBJ_FOLDER = ./obj/
-OBJ_FILES = $(SRC_FILES:.c=.o)
-OBJ = $(addprefix $(OBJ_FOLDER), $(OBJ_FILES))
 
-all: $(CHECKER_NAME)
+CHECKER_OBJ_FILES = $(CHECKER_SRC_FILES:.c=.o)
+CHECKER_OBJ = $(addprefix $(OBJ_FOLDER), $(CHECKER_OBJ_FILES))
 
-$(CHECKER_NAME): $(OBJ) $(LIB)
+PUSH_SWAP_OBJ_FILES = $(PUSH_SWAP_SRC_FILES:.c=.o)
+PUSH_SWAP_OBJ = $(addprefix $(OBJ_FOLDER), $(PUSH_SWAP_OBJ_FILES))
+
+all: $(CHECKER_NAME) $(PUSH_SWAP_NAME)
+
+$(CHECKER_NAME): $(CHECKER_OBJ) $(LIB)
 	@echo "$(CHECKER_NAME) [Compiling...]"
-	@gcc $(OBJ) $(LIB_FLAGS) -o $(CHECKER_NAME)
+	@gcc $(CHECKER_OBJ) $(LIB_FLAGS) -o $(CHECKER_NAME)
 	@echo "\033[A\033[K\033[A"
 	@echo "$(CHECKER_NAME) [\033[32mOK\033[0m]"
+
+$(PUSH_SWAP_NAME): $(PUSH_SWAP_OBJ) $(LIB)
+	@echo "$(PUSH_SWAP_NAME) [Compiling...]"
+	@gcc $(PUSH_SWAP_OBJ) $(LIB_FLAGS) -o $(PUSH_SWAP_NAME)
+	@echo "\033[A\033[K\033[A"
+	@echo "$(PUSH_SWAP_NAME) [\033[32mOK\033[0m]"
 
 $(LIB):
 	@echo "Libft compilation [...]"
