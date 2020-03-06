@@ -14,11 +14,12 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	if (!(ps.stack_b.tab = (int*)malloc(sizeof(int) * ps.stack_a.size)))
-
 		return (0);
 	ft_bzero(ps.stack_b.tab, ps.stack_a.size * sizeof(int));
 	ps.stack_b.size = ps.stack_a.size;
 	ps.stack_b.begin = ps.stack_b.size;
+	if (!check_order(ps.stack_a))
+		find_instr(&ps);
 	free(ps.stack_a.tab);
 	ps.stack_a.tab = NULL;
 	free(ps.stack_b.tab);
@@ -26,4 +27,11 @@ int	main(int argc, char **argv)
 	free(ps.instr_stock.tab);
 	ps.instr_stock.tab = NULL;
 	return (0);
+}
+
+void	find_instr(t_struct *ps)
+{
+	static void (*f[4])(t_struct *ps, int instr_nb) = {&ft_s, &ft_p, &ft_r, &ft_rr};
+
+	if (ps->stack_a.tab[0])
 }

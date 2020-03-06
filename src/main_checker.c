@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	ft_bzero(ps.stack_b.tab, ps.stack_a.size * sizeof(int));
 	ps.stack_b.size = ps.stack_a.size;
 	ps.stack_b.begin = ps.stack_b.size;
-	apply_instr(&ps);
+	apply_instr(&ps, 0);
 	// print_stack_a(&ps);
 	// print_stack_b(&ps);
 	if (!check_order(ps.stack_a))

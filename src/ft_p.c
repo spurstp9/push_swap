@@ -1,11 +1,19 @@
 #include "../inc/push_swap.h"
 
-void	ft_p(t_struct *ps, int instr_nb)
+void	ft_p(t_struct *ps, int instr_nb, char write_it)
 {
 	if (instr_nb == PA)
+	{
 		apply_p(&ps->stack_a, &ps->stack_b);
+		if (write_it)
+			write(1, "pa\n", 3);
+	}
 	else
+	{
 		apply_p(&ps->stack_b, &ps->stack_a);
+		if (write_it)
+			write(1, "pb\n", 3);
+	}
 }
 
 void	apply_p(t_stack *dest, t_stack *source)
