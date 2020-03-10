@@ -30,7 +30,7 @@ int				check_instr(t_struct *ps)
 		"rb", "rr", "rra", "rrb", "rrr"};
 
 	line = NULL;
-	while (get_next_line(1, &line) == 1)
+	while (get_next_line(0, &line) == 1)
 	{
 		i = 0;
 		while (i < 11 && ft_strcmp(line, instr[i]))

@@ -31,7 +31,11 @@ int	main(int argc, char **argv)
 
 void	find_instr(t_struct *ps)
 {
-	static void (*f[4])(t_struct *ps, int instr_nb) = {&ft_s, &ft_p, &ft_r, &ft_rr};
+	static void (*f[4])(t_struct *ps, int instr_nb, char write_it) = {&ft_s, &ft_p, &ft_r, &ft_rr};
 
-	if (ps->stack_a.tab[0])
+	if (ps->stack_a.size == 3)
+		deal_with_three(ps, f);
+	else
+		selection_sort(ps);
+	print_stack_a(ps);
 }

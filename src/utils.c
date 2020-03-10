@@ -42,3 +42,10 @@ void			print_stack_b(t_struct *ps)
 	}
 	printf("\n");
 }
+
+int				is_stack_empty(t_stack *stack)
+{
+	if (stack->begin == stack->size)
+		return (1);
+	return (0);
+}

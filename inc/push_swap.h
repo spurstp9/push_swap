@@ -45,12 +45,17 @@ int				check_args(int argc, char **argv, t_struct *ps);
 int				check_instr(t_struct *ps);
 int				check_order(t_stack stack_a);
 int				check_line(t_struct *ps, char *arg, int *nb);
+void			deal_with_three(t_struct *ps, void (*f[4])(t_struct *ps, int instr_nb, char write_it));
+void			find_instr(t_struct *ps);
 void			ft_init(t_struct *ps);
 int				ft_realloc(int **tab, int size, int to_add);
 void			ft_p(t_struct *ps, int instr_nb, char write_it);
 void			ft_r(t_struct *ps, int instr_nb, char write_it);
 void			ft_rr(t_struct *ps, int instr_nb, char write_it);
 void			ft_s(t_struct *ps, int instr_nb, char write_it);
+void			ft_swap(int *a, int *b);
 int				get_ft_nb(int instr);
+int				is_stack_empty(t_stack *stack);
+void			selection_sort(t_struct *ps);
 
 #endif
