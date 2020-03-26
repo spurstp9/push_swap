@@ -18,6 +18,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	char	*p_src;
 	size_t	i;
 
+	write(1, "memcpy\n", 7);
 	p_dst = (char*)dst;
 	p_src = (char*)src;
 	i = 0;

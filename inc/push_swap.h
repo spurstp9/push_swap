@@ -19,6 +19,16 @@
 
 # include <stdio.h>
 
+typedef struct	s_chunk
+{
+	int			stack_min;
+	int			stack_max;
+	int			chunk_min;
+	int			chunk_max;
+	int			interval;
+	int			chunk_nb;
+}				t_chunk;
+
 typedef struct	s_stack
 {
 	int			*tab;
@@ -30,13 +40,12 @@ typedef struct	s_struct
 {
 	t_stack		stack_a;
 	t_stack		stack_b;
-	t_stack		instr_stock;
 }				t_struct;
 
 void			print_stack_a(t_struct *ps);
 void			print_stack_b(t_struct *ps);
 
-int				apply_instr(t_struct *ps, char write_it);
+int				apply_instr(t_struct *ps, int instr, char write_it);
 void			apply_p(t_stack *dest, t_stack *source);
 void			apply_r(t_stack *stack);
 void			apply_rr(t_stack *stack);
@@ -45,9 +54,12 @@ int				check_args(int argc, char **argv, t_struct *ps);
 int				check_instr(t_struct *ps);
 int				check_order(t_stack stack_a);
 int				check_line(t_struct *ps, char *arg, int *nb);
+void			deal_with_five(t_struct *ps, void (*f[4])(t_struct *ps, int instr_nb, char write_it));
 void			deal_with_three(t_struct *ps, void (*f[4])(t_struct *ps, int instr_nb, char write_it));
 void			find_instr(t_struct *ps);
 void			ft_init(t_struct *ps);
+void			ft_move_back_to_a(t_struct *ps, void (*f[4])(t_struct *ps, int instr_nb, char write_it));
+void			ft_move_to_b(t_struct *ps, int rank, int instr, void (*f[4])(t_struct *ps, int instr_nb, char write_it));
 int				ft_realloc(int **tab, int size, int to_add);
 void			ft_p(t_struct *ps, int instr_nb, char write_it);
 void			ft_r(t_struct *ps, int instr_nb, char write_it);
@@ -55,7 +67,16 @@ void			ft_rr(t_struct *ps, int instr_nb, char write_it);
 void			ft_s(t_struct *ps, int instr_nb, char write_it);
 void			ft_swap(int *a, int *b);
 int				get_ft_nb(int instr);
+int				get_max(t_stack stack);
+int				get_max_index(t_stack stack);
+int				get_min(t_stack stack);
+int				get_min_index(t_stack stack);
+int				get_rank(t_stack stack, t_chunk ch, char up_or_down);
+void			init_chunk(t_struct *ps, t_chunk *ch, int nb);
+void			sort_algo_loop(t_struct *ps, int nb, void (*f[4])(t_struct *ps, int instr_nb, char write_it));
 int				is_stack_empty(t_stack *stack);
-void			selection_sort(t_struct *ps);
+void			selection_sort(t_struct *ps, void (*f[4])(t_struct *ps, int instr_nb, char write_it));
+void			selection_sort_five(t_struct *ps, void (*f[4])(t_struct *ps, int instr_nb, char write_it));
+int				sort_algo(t_struct *ps, t_chunk *ch, int nb, void (*f[4])(t_struct *ps, int instr_nb, char write_it));
 
 #endif

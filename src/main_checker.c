@@ -11,7 +11,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	ft_init(&ps);
-	if (!check_args(argc, argv, &ps) || !check_instr(&ps))
+	if (!check_args(argc, argv, &ps))
 	{
 		write(2, "Error\n", 6);
 		free(ps.stack_a.tab);
@@ -25,7 +25,15 @@ int	main(int argc, char **argv)
 	ft_bzero(ps.stack_b.tab, ps.stack_a.size * sizeof(int));
 	ps.stack_b.size = ps.stack_a.size;
 	ps.stack_b.begin = ps.stack_b.size;
-	apply_instr(&ps, 0);
+	if (!check_instr(&ps))
+	{
+		write(2, "Error\n", 6);
+		free(ps.stack_a.tab);
+		free(ps.stack_b.tab);
+		ps.stack_a.tab = NULL;
+		ps.stack_b.tab = NULL;
+		return (0);
+	}
 	// print_stack_a(&ps);
 	// print_stack_b(&ps);
 	if (!check_order(ps.stack_a))
@@ -36,8 +44,6 @@ int	main(int argc, char **argv)
 	ps.stack_a.tab = NULL;
 	free(ps.stack_b.tab);
 	ps.stack_b.tab = NULL;
-	free(ps.instr_stock.tab);
-	ps.instr_stock.tab = NULL;
 	// free(line);
 	// line = NULL;
 	// while (1)

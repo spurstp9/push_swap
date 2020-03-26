@@ -24,8 +24,6 @@ int	main(int argc, char **argv)
 	ps.stack_a.tab = NULL;
 	free(ps.stack_b.tab);
 	ps.stack_b.tab = NULL;
-	free(ps.instr_stock.tab);
-	ps.instr_stock.tab = NULL;
 	return (0);
 }
 
@@ -35,7 +33,22 @@ void	find_instr(t_struct *ps)
 
 	if (ps->stack_a.size == 3)
 		deal_with_three(ps, f);
+	else if (ps->stack_a.size <= 5)
+		deal_with_five(ps, f);
+	else if (ps->stack_a.size <= 20)
+	{
+		if (ps->stack_a.tab[0] > ps->stack_a.tab[1])
+			f[get_ft_nb(SA)](ps, SA, 1);
+		while (ps->stack_a.begin < ps->stack_a.size - 1 && !check_order(ps->stack_a))
+			selection_sort(ps, f);
+		// printf("begin = %d\n", ps->stack_a.begin);
+		while (!is_stack_empty(&ps->stack_b))
+			f[get_ft_nb(PA)](ps, PA, 1);
+		// sort_algo_loop(ps, 2, f);
+	}
+	else if (ps->stack_a.size < 500)
+		sort_algo_loop(ps, 5, f);
 	else
-		selection_sort(ps);
-	print_stack_a(ps);
+		sort_algo_loop(ps, 11, f);
+	// print_stack_a(ps);
 }

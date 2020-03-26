@@ -1,4 +1,5 @@
 #include "../inc/push_swap.h"
+#include <string.h>
 
 int				check_args(int argc, char **argv, t_struct *ps)
 {
@@ -39,15 +40,8 @@ int				check_instr(t_struct *ps)
 		line = NULL;
 		if (i == 11)
 			return (0);
-		if (!ft_realloc(&(ps->instr_stock.tab), ++ps->instr_stock.size, i))
-			return (0);
+		apply_instr(ps, i, 0);
 	}
-	i = 0;
-	// while (i < ps->instr_nb)
-	// {
-	// 	printf("%s\n", instr[ps->instr_stock[i]]);
-	// 	i++;
-	// }
 	return (1);
 }
 
@@ -55,14 +49,22 @@ int				ft_realloc(int **tab, int size, int to_add)
 {
 	int			*tmp;
 
+	// printf("Realloc\n");
 	tmp = NULL;
 	if (!(tmp = (int*)malloc(sizeof(int) * size)))
+	{
+		printf("Erreur de malloc\n");
 		return (0);
+	}
+	// printf("Malloc ok\n");
 	if (*tab)
-		ft_memcpy(tmp, *tab, size * sizeof(int));
+		memcpy(tmp, *tab, size * sizeof(int));
+	// printf("memcpy ok\n");
 	free(*tab);
+	// printf("Free ok\n");
 	tmp[size - 1] = to_add;
 	*tab = tmp;
+	// printf("Realloc OK\n");
 	return (1);
 }
 

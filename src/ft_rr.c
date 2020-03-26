@@ -2,9 +2,9 @@
 
 void	ft_rr(t_struct *ps, int instr_nb, char write_it)
 {
-	if (instr_nb == RRA || instr_nb == RRR)
+	if (ps->stack_a.size - 1 - ps->stack_a.begin > 0 && (instr_nb == RRA || instr_nb == RRR))
 		apply_rr(&ps->stack_a);
-	if (instr_nb == RRB || instr_nb == RRR)
+	if (ps->stack_b.size - 1 - ps->stack_b.begin > 0 && (instr_nb == RRB || instr_nb == RRR))
 		apply_rr(&ps->stack_b);
 	if (write_it)
 	{
