@@ -1,7 +1,7 @@
 #include "../inc/push_swap.h"
 
 
-void	sort_algo_loop(t_struct *ps, int nb, void (*f[4])(t_struct *ps, int instr_nb, char write_it))
+void	sort_algo_loop(t_struct *ps, int nb)
 {
 	t_chunk ch;
 
@@ -11,15 +11,15 @@ void	sort_algo_loop(t_struct *ps, int nb, void (*f[4])(t_struct *ps, int instr_n
 	while (ps->stack_a.begin < ps->stack_a.size)
 	{
 		// printf("begin = %d\n", ps->stack_a.begin);
-		sort_algo(ps, &ch, nb, f);
+		sort_algo(ps, &ch, nb);
 		// printf("\nSort ok\n\n");
 	}
 	// print_stack_b(ps);
 	while (!is_stack_empty(&ps->stack_b))
-		ft_move_back_to_a(ps, f);
+		ft_move_back_to_a(ps);
 }
 
-int	sort_algo(t_struct *ps, t_chunk *ch, int nb, void (*f[4])(t_struct *ps, int instr_nb, char write_it))
+int	sort_algo(t_struct *ps, t_chunk *ch, int nb)
 {
 	int rank_up;
 	int rank_down;
@@ -36,7 +36,7 @@ int	sort_algo(t_struct *ps, t_chunk *ch, int nb, void (*f[4])(t_struct *ps, int 
 		if (ch->chunk_nb == nb && ch->chunk_max < ch->stack_max)
 			ch->chunk_max = ch->stack_max;
 		// printf("Chunk %d : %d - %d\n", ch->chunk_nb, ch->chunk_min, ch->chunk_max);
-		return (sort_algo(ps, ch, nb, f));
+		return (sort_algo(ps, ch, nb));
 	}
 	// printf("Chunk %d : %d - %d\n", ch->chunk_nb, ch->chunk_min, ch->chunk_max);
 	rank_down = get_rank(ps->stack_a, *ch, 1);
@@ -46,7 +46,7 @@ int	sort_algo(t_struct *ps, t_chunk *ch, int nb, void (*f[4])(t_struct *ps, int 
 	// else
 		rank_to_move = (rank_up - ps->stack_a.begin < ps->stack_a.size - rank_down ? rank_up : rank_down);
 	instr = (rank_to_move - ps->stack_a.begin < ps->stack_a.size - rank_to_move ? RA : RRA);
-	ft_move_to_b(ps, rank_to_move, instr, f);
+	ft_move_to_b(ps, rank_to_move, instr);
 	return (0);
 }
 
@@ -73,7 +73,7 @@ int		get_rank(t_stack stack, t_chunk ch, char up_or_down)
 	return (i);
 }
 
-void	ft_move_to_b(t_struct *ps, int rank, int instr, void (*f[4])(t_struct *ps, int instr_nb, char write_it))
+void	ft_move_to_b(t_struct *ps, int rank, int instr)
 {
 	int nb;
 	int min_b;
@@ -81,16 +81,16 @@ void	ft_move_to_b(t_struct *ps, int rank, int instr, void (*f[4])(t_struct *ps, 
 	nb = ps->stack_a.tab[rank];
 	// printf("NOMBRE A METTRE DANS LA PILE B : %d\n", nb);
 	while (ps->stack_a.tab[ps->stack_a.begin] != nb)
-		f[get_ft_nb(instr)](ps, instr, 1);
-	f[get_ft_nb(PB)](ps, PB, 1);
+	apply_instr(ps, instr, 1);
+	apply_instr(ps, PB, 1);
 	min_b = get_min(ps->stack_b);
 	if (nb < min_b)
-		f[get_ft_nb(RB)](ps, RB, 1);
+		apply_instr(ps, RB, 1);
 	if (ps->stack_b.begin < ps->stack_b.size - 1 && nb < ps->stack_b.tab[ps->stack_b.begin + 1])
-		f[get_ft_nb(SB)](ps, SB, 1);
+		apply_instr(ps, SB, 1);
 }
 
-void	ft_move_back_to_a(t_struct *ps, void (*f[4])(t_struct *ps, int instr_nb, char write_it))
+void	ft_move_back_to_a(t_struct *ps)
 {
 	int max;
 	int max_index;
@@ -103,8 +103,8 @@ void	ft_move_back_to_a(t_struct *ps, void (*f[4])(t_struct *ps, int instr_nb, ch
 	instr = (max_index <= middle ? RB : RRB);
 	max_index = 0;
 	while (ps->stack_b.tab[ps->stack_b.begin] != max && ++max_index)
-		f[get_ft_nb(instr)](ps, instr, 1);
-	f[get_ft_nb(PA)](ps, PA, 1);
+	apply_instr(ps, instr, 1);
+	apply_instr(ps, PA, 1);
 	// instr = (instr == RB ? RRB : RB);
 	// while (max_index--)
 	// 	f[get_ft_nb(instr)](ps, instr, 1);

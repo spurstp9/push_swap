@@ -32,6 +32,8 @@ int	main(int argc, char **argv)
 		free(ps.stack_b.tab);
 		ps.stack_a.tab = NULL;
 		ps.stack_b.tab = NULL;
+		// while (1)
+		// 	;
 		return (0);
 	}
 	// print_stack_a(&ps);

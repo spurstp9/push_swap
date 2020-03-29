@@ -5,12 +5,18 @@ int	main(int argc, char **argv)
 	t_struct	ps;
 
 	if (argc == 1)
+	{
+		// while (1)
+		// 	;
 		return (0);
+	}
 	ft_init(&ps);
 	if (!check_args(argc, argv, &ps))
 	{
 		write(2, "Error\n", 6);
 		free(ps.stack_a.tab);
+		// while (1)
+		// 	;
 		return (0);
 	}
 	if (!(ps.stack_b.tab = (int*)malloc(sizeof(int) * ps.stack_a.size)))
@@ -24,31 +30,33 @@ int	main(int argc, char **argv)
 	ps.stack_a.tab = NULL;
 	free(ps.stack_b.tab);
 	ps.stack_b.tab = NULL;
+	// while (1)
+	// 	;
 	return (0);
 }
 
 void	find_instr(t_struct *ps)
 {
-	static void (*f[4])(t_struct *ps, int instr_nb, char write_it) = {&ft_s, &ft_p, &ft_r, &ft_rr};
-
-	if (ps->stack_a.size == 3)
-		deal_with_three(ps, f);
+	if (ps->stack_a.size == 2 && ps->stack_a.tab[0] > ps->stack_a.tab[1])
+		apply_instr(ps, SA, 1);
+	else if (ps->stack_a.size == 3)
+		deal_with_three(ps);
 	else if (ps->stack_a.size <= 5)
-		deal_with_five(ps, f);
+		deal_with_five(ps);
 	else if (ps->stack_a.size <= 20)
 	{
 		if (ps->stack_a.tab[0] > ps->stack_a.tab[1])
-			f[get_ft_nb(SA)](ps, SA, 1);
+			apply_instr(ps, SA, 1);
 		while (ps->stack_a.begin < ps->stack_a.size - 1 && !check_order(ps->stack_a))
-			selection_sort(ps, f);
+			selection_sort(ps);
 		// printf("begin = %d\n", ps->stack_a.begin);
 		while (!is_stack_empty(&ps->stack_b))
-			f[get_ft_nb(PA)](ps, PA, 1);
-		// sort_algo_loop(ps, 2, f);
+			apply_instr(ps, PA, 1);
+		// sort_algo_loop(ps, 2);
 	}
 	else if (ps->stack_a.size < 500)
-		sort_algo_loop(ps, 5, f);
+		sort_algo_loop(ps, 5);
 	else
-		sort_algo_loop(ps, 11, f);
+		sort_algo_loop(ps, 11);
 	// print_stack_a(ps);
 }

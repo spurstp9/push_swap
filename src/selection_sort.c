@@ -1,6 +1,6 @@
 #include "../inc/push_swap.h"
 
-void	selection_sort(t_struct *ps, void (*f[4])(t_struct *ps, int instr_nb, char write_it))
+void	selection_sort(t_struct *ps)
 {
 	int min;
 	int min_index;
@@ -14,7 +14,7 @@ void	selection_sort(t_struct *ps, void (*f[4])(t_struct *ps, int instr_nb, char 
 	// printf("begin = %d min_index = %d middle = %d min = %d\n", ps->stack_a.begin, min_index, middle, min);
 	instr = (min_index <= middle ? RA : RRA);
 	while (ps->stack_a.tab[ps->stack_a.begin] != min)
-		f[get_ft_nb(instr)](ps, instr, 1);
+		apply_instr(ps, instr, 1);
 	if (!check_order(ps->stack_a))
-		f[get_ft_nb(PB)](ps, PB, 1);
+		apply_instr(ps, PB, 1);
 }

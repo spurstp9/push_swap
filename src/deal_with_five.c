@@ -1,13 +1,13 @@
 #include "../inc/push_swap.h"
 
-void	deal_with_five(t_struct *ps, void (*f[4])(t_struct *ps, int instr_nb, char write_it))
+void	deal_with_five(t_struct *ps)
 {
 	int first;
 	int last;
 
 	while (ps->stack_a.size - 1 - ps->stack_a.begin != 2)
-		f[get_ft_nb(PB)](ps, PB, 1);
-	deal_with_three(ps, f);
+		apply_instr(ps, PB, 1);
+	deal_with_three(ps);
 	// print_stack_a(ps);
 	while (ps->stack_a.begin != 0)
 	{
@@ -15,18 +15,18 @@ void	deal_with_five(t_struct *ps, void (*f[4])(t_struct *ps, int instr_nb, char 
 		last = ps->stack_a.tab[ps->stack_a.size - 1];
 		if (ps->stack_b.tab[ps->stack_b.begin] > last)
 		{
-			f[get_ft_nb(PA)](ps, PA, 1);
-			f[get_ft_nb(RA)](ps, RA, 1);
+			apply_instr(ps, PA, 1);
+			apply_instr(ps, RA, 1);
 		}
 		else if (ps->stack_b.tab[ps->stack_b.begin] < first)
-			f[get_ft_nb(PA)](ps, PA, 1);
+			apply_instr(ps, PA, 1);
 		else
-			selection_sort_five(ps, f);
+			selection_sort_five(ps);
 		// print_stack_a(ps);
 	}
 }
 
-void	selection_sort_five(t_struct *ps, void (*f[4])(t_struct *ps, int instr_nb, char write_it))
+void	selection_sort_five(t_struct *ps)
 {
 	int rank;
 	int i;
@@ -52,11 +52,11 @@ void	selection_sort_five(t_struct *ps, void (*f[4])(t_struct *ps, int instr_nb, 
 	rank = (instr == RA ? rank - ps->stack_a.begin : ps->stack_a.size - rank);
 	i = rank;
 	while (rank--)
-		f[get_ft_nb(instr)](ps, instr, 1);
-	f[get_ft_nb(PA)](ps, PA, 1);
+	apply_instr(ps, instr, 1);
+	apply_instr(ps, PA, 1);
 	instr = (instr == RA ? RRA : RA);
 	while (i--)
-		f[get_ft_nb(instr)](ps, instr, 1);
+	apply_instr(ps, instr, 1);
 	if (instr == RA)
-		f[get_ft_nb(instr)](ps, instr, 1);
+	apply_instr(ps, instr, 1);
 }
