@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_p.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
+/*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:03:22 by agardina          #+#    #+#             */
-/*   Updated: 2020/03/30 17:03:28 by agardina         ###   ########.fr       */
+/*   Updated: 2020/03/30 19:03:06 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/prototypes.h"
 
 void	ft_p(t_struct *ps, int instr_nb, char write_it)
 {

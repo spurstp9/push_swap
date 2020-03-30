@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rr.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
+/*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:04:03 by agardina          #+#    #+#             */
-/*   Updated: 2020/03/30 17:04:09 by agardina         ###   ########.fr       */
+/*   Updated: 2020/03/30 19:03:37 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/prototypes.h"
 
 void	ft_rr(t_struct *ps, int instr_nb, char write_it)
 {

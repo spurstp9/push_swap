@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
+/*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:05:07 by agardina          #+#    #+#             */
-/*   Updated: 2020/03/30 17:05:28 by agardina         ###   ########.fr       */
+/*   Updated: 2020/03/30 19:05:16 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/prototypes.h"
 
 int				check_args(int argc, char **argv, t_struct *ps)
 {
@@ -62,10 +62,7 @@ int				ft_realloc(int **tab, int size, int to_add)
 
 	tmp = NULL;
 	if (!(tmp = (int*)malloc(sizeof(int) * size)))
-	{
-		printf("Erreur de malloc\n");
 		return (0);
-	}
 	if (*tab)
 		memcpy(tmp, *tab, size * sizeof(int));
 	free(*tab);
@@ -89,7 +86,7 @@ int				check_line(t_struct *ps, char *arg, int *nb)
 			return (0);
 	}
 	*nb = ft_atoi(arg);
-	if ((arg[0] == '-' && *nb > 0) 
+	if ((arg[0] == '-' && *nb > 0)
 			|| ((arg[0] == '+' || ft_isdigit(arg[0])) && *nb < 0))
 		return (0);
 	i = 0;

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   deal_with_three.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
+/*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:02:55 by agardina          #+#    #+#             */
-/*   Updated: 2020/03/30 17:03:03 by agardina         ###   ########.fr       */
+/*   Updated: 2020/03/30 19:02:50 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/prototypes.h"
 
 void	deal_with_three(t_struct *ps)
 {

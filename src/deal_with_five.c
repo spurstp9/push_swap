@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   deal_with_five.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
+/*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:02:19 by agardina          #+#    #+#             */
-/*   Updated: 2020/03/30 17:02:26 by agardina         ###   ########.fr       */
+/*   Updated: 2020/03/30 18:49:57 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/prototypes.h"
 
 void	deal_with_five(t_struct *ps)
 {

@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
+/*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/30 17:07:00 by agardina          #+#    #+#             */
-/*   Updated: 2020/03/30 17:07:11 by agardina         ###   ########.fr       */
+/*   Created: 2020/03/30 18:23:49 by agardina          #+#    #+#             */
+/*   Updated: 2020/03/30 19:06:38 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+#ifndef PROTOTYPES_H
 
-# define PUSH_SWAP_H
+# define PROTOTYPES_H
 # include "../libft/includes/libft.h"
+# include "structs.h"
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
@@ -28,29 +29,6 @@
 # define RRA 8
 # define RRB 9
 # define RRR 10
-
-typedef struct	s_chunk
-{
-	int			stack_min;
-	int			stack_max;
-	int			chunk_min;
-	int			chunk_max;
-	int			interval;
-	int			chunk_nb;
-}				t_chunk;
-
-typedef struct	s_stack
-{
-	int			*tab;
-	int			begin;
-	int			size;
-}				t_stack;
-
-typedef struct	s_struct
-{
-	t_stack		stack_a;
-	t_stack		stack_b;
-}				t_struct;
 
 int				apply_instr(t_struct *ps, int instr, char write_it);
 void			apply_p(t_stack *dest, t_stack *source);

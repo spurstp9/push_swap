@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
+/*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:04:34 by agardina          #+#    #+#             */
-/*   Updated: 2020/03/30 17:04:42 by agardina         ###   ########.fr       */
+/*   Updated: 2020/03/30 19:04:44 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/prototypes.h"
 
 int	main(int argc, char **argv)
 {
@@ -38,5 +38,5 @@ int	main(int argc, char **argv)
 		write(1, "KO\n", 3);
 	else
 		write(1, "OK\n", 3);
-	return(ft_free_and_return(&ps));
+	return (ft_free_and_return(&ps));
 }

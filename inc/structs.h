@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   apply_instr.c                                      :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/30 17:00:40 by agardina          #+#    #+#             */
-/*   Updated: 2020/03/30 18:48:23 by agardina         ###   ########.fr       */
+/*   Created: 2020/03/30 18:21:02 by agardina          #+#    #+#             */
+/*   Updated: 2020/03/30 19:06:47 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/prototypes.h"
+#ifndef STRUCTS_H
 
-int	apply_instr(t_struct *ps, int instr, char write_it)
+# define STRUCTS_H
+
+typedef struct	s_chunk
 {
-	static void (*f[4])(t_struct *ps, int instr_nb, char write_it) = {&ft_s,
-		&ft_p, &ft_r, &ft_rr};
+	int			stack_min;
+	int			stack_max;
+	int			chunk_min;
+	int			chunk_max;
+	int			interval;
+	int			chunk_nb;
+}				t_chunk;
 
-	f[get_ft_nb(instr)](ps, instr, write_it);
-	return (1);
-}
-
-int	get_ft_nb(int instr)
+typedef struct	s_stack
 {
-	if (instr <= 2)
-		return (0);
-	else if (instr <= 4)
-		return (1);
-	else if (instr <= 7)
-		return (2);
-	return (3);
-}
+	int			*tab;
+	int			begin;
+	int			size;
+}				t_stack;
+
+typedef struct	s_struct
+{
+	t_stack		stack_a;
+	t_stack		stack_b;
+}				t_struct;
+
+#endif

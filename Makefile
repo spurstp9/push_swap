@@ -21,7 +21,7 @@ PUSH_SWAP_SRC_FILES = apply_instr.c check_order.c chunk_sort.c chunk_sort2.c dea
 PUSH_SWAP_SRC = $(addprefix $(SRC_FOLDER), $(PUSH_SWAP_SRC_FILES))
 
 HDR_FOLDER = ./inc/
-HDR_FILES = push_swap.h
+HDR_FILES = prototypes.h structs.h
 HDR = $(addprefix $(HDR_FOLDER), $(HDR_FILES))
 
 OBJ_FOLDER = ./obj/

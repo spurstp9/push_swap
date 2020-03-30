@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   selection_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
+/*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:05:38 by agardina          #+#    #+#             */
-/*   Updated: 2020/03/30 17:05:42 by agardina         ###   ########.fr       */
+/*   Updated: 2020/03/30 19:05:29 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/prototypes.h"
 
 void	selection_sort(t_struct *ps)
 {

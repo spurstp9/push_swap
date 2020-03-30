@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
+/*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:05:51 by agardina          #+#    #+#             */
-/*   Updated: 2020/03/30 17:05:55 by agardina         ###   ########.fr       */
+/*   Updated: 2020/03/30 19:05:42 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/prototypes.h"
 
-void			ft_init(t_struct *ps)
+void	ft_init(t_struct *ps)
 {
 	ps->stack_a.tab = NULL;
 	ps->stack_a.begin = 0;
@@ -22,7 +22,7 @@ void			ft_init(t_struct *ps)
 	ps->stack_b.size = 0;
 }
 
-int				is_stack_empty(t_stack *stack)
+int		is_stack_empty(t_stack *stack)
 {
 	if (stack->begin == stack->size)
 		return (1);

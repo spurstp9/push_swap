@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_sort2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
+/*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:02:04 by agardina          #+#    #+#             */
-/*   Updated: 2020/03/30 17:02:08 by agardina         ###   ########.fr       */
+/*   Updated: 2020/03/30 18:49:43 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/prototypes.h"
 
 int		get_rank(t_stack stack, t_chunk ch, char up_or_down)
 {
