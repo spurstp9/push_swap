@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina </var/mail/agardina>              +#+  +:+       +#+        */
+/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:07:00 by agardina          #+#    #+#             */
 /*   Updated: 2020/03/30 17:07:11 by agardina         ###   ########.fr       */
@@ -28,8 +28,6 @@
 # define RRA 8
 # define RRB 9
 # define RRR 10
-
-# include <stdio.h>
 
 typedef struct	s_chunk
 {

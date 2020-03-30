@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   selection_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina </var/mail/agardina>              +#+  +:+       +#+        */
+/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:05:38 by agardina          #+#    #+#             */
 /*   Updated: 2020/03/30 17:05:42 by agardina         ###   ########.fr       */

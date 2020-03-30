@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_order.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina </var/mail/agardina>              +#+  +:+       +#+        */
+/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:01:06 by agardina          #+#    #+#             */
 /*   Updated: 2020/03/30 17:01:08 by agardina         ###   ########.fr       */

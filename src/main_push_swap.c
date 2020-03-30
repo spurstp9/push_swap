@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main_push_swap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina </var/mail/agardina>              +#+  +:+       +#+        */
+/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:04:49 by agardina          #+#    #+#             */
 /*   Updated: 2020/03/30 17:04:52 by agardina         ###   ########.fr       */
@@ -47,7 +47,8 @@ void	find_instr(t_struct *ps)
 	{
 		if (ps->stack_a.tab[0] > ps->stack_a.tab[1])
 			apply_instr(ps, SA, 1);
-		while (ps->stack_a.begin < ps->stack_a.size - 1 && !check_order(ps->stack_a))
+		while (ps->stack_a.begin < ps->stack_a.size - 1
+			&& !check_order(ps->stack_a))
 			selection_sort(ps);
 		while (!is_stack_empty(&ps->stack_b))
 			apply_instr(ps, PA, 1);

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_sort2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina </var/mail/agardina>              +#+  +:+       +#+        */
+/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:02:04 by agardina          #+#    #+#             */
 /*   Updated: 2020/03/30 17:02:08 by agardina         ###   ########.fr       */
@@ -47,7 +47,8 @@ void	ft_move_to_b(t_struct *ps, int rank, int instr)
 	min_b = get_min(ps->stack_b);
 	if (nb < min_b)
 		apply_instr(ps, RB, 1);
-	if (ps->stack_b.begin < ps->stack_b.size - 1 && nb < ps->stack_b.tab[ps->stack_b.begin + 1])
+	if (ps->stack_b.begin < ps->stack_b.size - 1
+		&& nb < ps->stack_b.tab[ps->stack_b.begin + 1])
 		apply_instr(ps, SB, 1);
 }
 

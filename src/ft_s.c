@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_s.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina </var/mail/agardina>              +#+  +:+       +#+        */
+/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:04:19 by agardina          #+#    #+#             */
 /*   Updated: 2020/03/30 17:04:22 by agardina         ###   ########.fr       */

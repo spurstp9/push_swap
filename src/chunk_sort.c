@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina </var/mail/agardina>              +#+  +:+       +#+        */
+/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:01:20 by agardina          #+#    #+#             */
 /*   Updated: 2020/03/30 17:01:26 by agardina         ###   ########.fr       */
@@ -40,8 +40,10 @@ int	sort_algo(t_struct *ps, t_chunk *ch, int nb)
 		return (sort_algo(ps, ch, nb));
 	}
 	rank_down = get_rank(ps->stack_a, *ch, 1);
-	rank_to_move = (rank_up - ps->stack_a.begin < ps->stack_a.size - rank_down ? rank_up : rank_down);
-	instr = (rank_to_move - ps->stack_a.begin < ps->stack_a.size - rank_to_move ? RA : RRA);
+	rank_to_move = (rank_up - ps->stack_a.begin < ps->stack_a.size
+		- rank_down ? rank_up : rank_down);
+	instr = (rank_to_move - ps->stack_a.begin < ps->stack_a.size
+		- rank_to_move ? RA : RRA);
 	ft_move_to_b(ps, rank_to_move, instr);
 	return (0);
 }

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rr.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina </var/mail/agardina>              +#+  +:+       +#+        */
+/*   By: agardina <agardina@student.42.fr>              +#+  +:+       +#+    */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:04:03 by agardina          #+#    #+#             */
 /*   Updated: 2020/03/30 17:04:09 by agardina         ###   ########.fr       */
@@ -14,9 +14,11 @@
 
 void	ft_rr(t_struct *ps, int instr_nb, char write_it)
 {
-	if (ps->stack_a.size - 1 - ps->stack_a.begin > 0 && (instr_nb == RRA || instr_nb == RRR))
+	if (ps->stack_a.size - 1 - ps->stack_a.begin > 0
+		&& (instr_nb == RRA || instr_nb == RRR))
 		apply_rr(&ps->stack_a);
-	if (ps->stack_b.size - 1 - ps->stack_b.begin > 0 && (instr_nb == RRB || instr_nb == RRR))
+	if (ps->stack_b.size - 1 - ps->stack_b.begin > 0
+		&& (instr_nb == RRB || instr_nb == RRR))
 		apply_rr(&ps->stack_b);
 	if (write_it)
 	{
