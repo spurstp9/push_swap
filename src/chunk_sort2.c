@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   chunk_sort2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agardina </var/mail/agardina>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/30 17:02:04 by agardina          #+#    #+#             */
+/*   Updated: 2020/03/30 17:02:08 by agardina         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 int		get_rank(t_stack stack, t_chunk ch, char up_or_down)
@@ -8,14 +20,14 @@ int		get_rank(t_stack stack, t_chunk ch, char up_or_down)
 	{
 		i = stack.begin;
 		while (i < stack.size && !(ch.chunk_min <= stack.tab[i]
-			&& stack.tab[i] <= ch.chunk_max))
+					&& stack.tab[i] <= ch.chunk_max))
 			i++;
 	}
 	else
 	{
 		i = stack.size - 1;
 		while (stack.begin <= i && !(ch.chunk_min <= stack.tab[i]
-			&& stack.tab[i] <= ch.chunk_max))
+					&& stack.tab[i] <= ch.chunk_max))
 			i--;
 	}
 	if (i == stack.size || i == stack.begin - 1)
@@ -30,7 +42,7 @@ void	ft_move_to_b(t_struct *ps, int rank, int instr)
 
 	nb = ps->stack_a.tab[rank];
 	while (ps->stack_a.tab[ps->stack_a.begin] != nb)
-	apply_instr(ps, instr, 1);
+		apply_instr(ps, instr, 1);
 	apply_instr(ps, PB, 1);
 	min_b = get_min(ps->stack_b);
 	if (nb < min_b)
@@ -52,7 +64,7 @@ void	ft_move_back_to_a(t_struct *ps)
 	instr = (max_index <= middle ? RB : RRB);
 	max_index = 0;
 	while (ps->stack_b.tab[ps->stack_b.begin] != max && ++max_index)
-	apply_instr(ps, instr, 1);
+		apply_instr(ps, instr, 1);
 	apply_instr(ps, PA, 1);
 }
 
