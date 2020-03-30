@@ -8,7 +8,6 @@ void	deal_with_five(t_struct *ps)
 	while (ps->stack_a.size - 1 - ps->stack_a.begin != 2)
 		apply_instr(ps, PB, 1);
 	deal_with_three(ps);
-	// print_stack_a(ps);
 	while (ps->stack_a.begin != 0)
 	{
 		first = ps->stack_a.tab[ps->stack_a.begin];
@@ -22,7 +21,6 @@ void	deal_with_five(t_struct *ps)
 			apply_instr(ps, PA, 1);
 		else
 			selection_sort_five(ps);
-		// print_stack_a(ps);
 	}
 }
 
@@ -32,6 +30,26 @@ void	selection_sort_five(t_struct *ps)
 	int i;
 	int instr;
 	int middle;
+
+	rank = get_bigger_number_rank(ps);
+	middle = (ps->stack_a.size - ps->stack_a.begin) / 2 + ps->stack_a.begin;
+	instr = (rank <= middle ? RA : RRA);
+	rank = (instr == RA ? rank - ps->stack_a.begin : ps->stack_a.size - rank);
+	i = rank;
+	while (rank--)
+		apply_instr(ps, instr, 1);
+	apply_instr(ps, PA, 1);
+	instr = (instr == RA ? RRA : RA);
+	while (i--)
+		apply_instr(ps, instr, 1);
+	if (instr == RA)
+		apply_instr(ps, instr, 1);
+}
+
+int		get_bigger_number_rank(t_struct *ps)
+{
+	int i;
+	int rank;
 
 	rank = 0;
 	i = ps->stack_a.begin + 1;
@@ -45,18 +63,5 @@ void	selection_sort_five(t_struct *ps)
 		else
 			i++;
 	}
-	// printf("rank = %d\n", rank);
-	middle = (ps->stack_a.size - ps->stack_a.begin) / 2 + ps->stack_a.begin;
-	// printf("middle = %d\n", middle);
-	instr = (rank <= middle ? RA : RRA);
-	rank = (instr == RA ? rank - ps->stack_a.begin : ps->stack_a.size - rank);
-	i = rank;
-	while (rank--)
-	apply_instr(ps, instr, 1);
-	apply_instr(ps, PA, 1);
-	instr = (instr == RA ? RRA : RA);
-	while (i--)
-	apply_instr(ps, instr, 1);
-	if (instr == RA)
-	apply_instr(ps, instr, 1);
+	return (rank);
 }

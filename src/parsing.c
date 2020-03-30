@@ -49,22 +49,17 @@ int				ft_realloc(int **tab, int size, int to_add)
 {
 	int			*tmp;
 
-	// printf("Realloc\n");
 	tmp = NULL;
 	if (!(tmp = (int*)malloc(sizeof(int) * size)))
 	{
 		printf("Erreur de malloc\n");
 		return (0);
 	}
-	// printf("Malloc ok\n");
 	if (*tab)
 		memcpy(tmp, *tab, size * sizeof(int));
-	// printf("memcpy ok\n");
 	free(*tab);
-	// printf("Free ok\n");
 	tmp[size - 1] = to_add;
 	*tab = tmp;
-	// printf("Realloc OK\n");
 	return (1);
 }
 

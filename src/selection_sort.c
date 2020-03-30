@@ -7,11 +7,9 @@ void	selection_sort(t_struct *ps)
 	int middle;
 	int instr;
 
-	// print_stack_a(ps);
 	min = get_min(ps->stack_a);
 	min_index = get_min_index(ps->stack_a);
 	middle = (ps->stack_a.size - ps->stack_a.begin) / 2 + ps->stack_a.begin;
-	// printf("begin = %d min_index = %d middle = %d min = %d\n", ps->stack_a.begin, min_index, middle, min);
 	instr = (min_index <= middle ? RA : RRA);
 	while (ps->stack_a.tab[ps->stack_a.begin] != min)
 		apply_instr(ps, instr, 1);

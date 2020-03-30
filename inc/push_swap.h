@@ -42,9 +42,6 @@ typedef struct	s_struct
 	t_stack		stack_b;
 }				t_struct;
 
-void			print_stack_a(t_struct *ps);
-void			print_stack_b(t_struct *ps);
-
 int				apply_instr(t_struct *ps, int instr, char write_it);
 void			apply_p(t_stack *dest, t_stack *source);
 void			apply_r(t_stack *stack);
@@ -57,6 +54,7 @@ int				check_line(t_struct *ps, char *arg, int *nb);
 void			deal_with_five(t_struct *ps);
 void			deal_with_three(t_struct *ps);
 void			find_instr(t_struct *ps);
+int				ft_free_and_return(t_struct *ps);
 void			ft_init(t_struct *ps);
 void			ft_move_back_to_a(t_struct *ps);
 void			ft_move_to_b(t_struct *ps, int rank, int instr);
@@ -66,6 +64,7 @@ void			ft_r(t_struct *ps, int instr_nb, char write_it);
 void			ft_rr(t_struct *ps, int instr_nb, char write_it);
 void			ft_s(t_struct *ps, int instr_nb, char write_it);
 void			ft_swap(int *a, int *b);
+int				get_bigger_number_rank(t_struct *ps);
 int				get_ft_nb(int instr);
 int				get_max(t_stack stack);
 int				get_max_index(t_stack stack);
