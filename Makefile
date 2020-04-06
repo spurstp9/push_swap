@@ -14,10 +14,13 @@ LIB = $(addprefix $(LIB_FOLDER), $(LIB_NAME))
 
 SRC_FOLDER = ./src/
 
-CHECKER_SRC_FILES = apply_instr.c check_order.c ft_p.c ft_r.c ft_rr.c ft_s.c main_checker.c parsing.c utils.c utils2.c
+CHECKER_SRC_FILES = apply_instr.c check_order.c ft_p.c ft_r.c ft_rr.c \
+		ft_s.c main_checker.c parsing.c utils.c utils2.c
 CHECKER_SRC = $(addprefix $(SRC_FOLDER), $(CHECKER_SRC_FILES))
 
-PUSH_SWAP_SRC_FILES = apply_instr.c check_order.c chunk_sort.c chunk_sort2.c deal_with_three.c deal_with_five.c ft_p.c ft_r.c ft_rr.c ft_s.c main_push_swap.c parsing.c selection_sort.c utils.c utils2.c
+PUSH_SWAP_SRC_FILES = apply_instr.c check_order.c chunk_sort.c \
+		chunk_sort2.c deal_with_three.c ft_p.c ft_r.c ft_rr.c \
+		ft_s.c main_push_swap.c parsing.c selection_sort.c utils.c utils2.c
 PUSH_SWAP_SRC = $(addprefix $(SRC_FOLDER), $(PUSH_SWAP_SRC_FILES))
 
 HDR_FOLDER = ./inc/

@@ -39,7 +39,6 @@ int				check_args(int argc, char **argv, t_struct *ps);
 int				check_instr(t_struct *ps);
 int				check_order(t_stack stack_a);
 int				check_line(t_struct *ps, char *arg, int *nb);
-void			deal_with_five(t_struct *ps);
 void			deal_with_three(t_struct *ps);
 void			find_instr(t_struct *ps);
 int				ft_free_and_return(t_struct *ps);
@@ -52,7 +51,6 @@ void			ft_r(t_struct *ps, int instr_nb, char write_it);
 void			ft_rr(t_struct *ps, int instr_nb, char write_it);
 void			ft_s(t_struct *ps, int instr_nb, char write_it);
 void			ft_swap(int *a, int *b);
-int				get_bigger_number_rank(t_struct *ps);
 int				get_ft_nb(int instr);
 int				get_max(t_stack stack);
 int				get_max_index(t_stack stack);
@@ -63,7 +61,6 @@ void			init_chunk(t_struct *ps, t_chunk *ch, int nb);
 void			sort_algo_loop(t_struct *ps, int nb);
 int				is_stack_empty(t_stack *stack);
 void			selection_sort(t_struct *ps);
-void			selection_sort_five(t_struct *ps);
 int				sort_algo(t_struct *ps, t_chunk *ch, int nb);
 
 #endif

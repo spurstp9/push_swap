@@ -41,8 +41,6 @@ void	find_instr(t_struct *ps)
 		apply_instr(ps, SA, 1);
 	else if (ps->stack_a.size == 3)
 		deal_with_three(ps);
-	else if (ps->stack_a.size <= 5)
-		deal_with_five(ps);
 	else if (ps->stack_a.size <= 20)
 	{
 		if (ps->stack_a.tab[0] > ps->stack_a.tab[1])
