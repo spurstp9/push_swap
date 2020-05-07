@@ -43,6 +43,7 @@ void			deal_with_three(t_struct *ps);
 void			find_instr(t_struct *ps);
 int				ft_free_and_return(t_struct *ps);
 void			ft_init(t_struct *ps);
+int				ft_instr_cmp(char *line);
 void			ft_move_back_to_a(t_struct *ps);
 void			ft_move_to_b(t_struct *ps, int rank, int instr);
 int				ft_realloc(int **tab, int size, int to_add);

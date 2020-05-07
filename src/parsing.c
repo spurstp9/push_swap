@@ -36,24 +36,33 @@ int				check_args(int argc, char **argv, t_struct *ps)
 
 int				check_instr(t_struct *ps)
 {
-	int			i;
+	int			instr_nb;
 	char		*line;
-	static char	*instr[] = {"sa", "sb", "ss", "pa", "pb", "ra",
-		"rb", "rr", "rra", "rrb", "rrr"};
+	int			ret;
 
 	line = NULL;
-	while (get_next_line(0, &line) == 1)
+	while ((ret = get_next_line(0, &line)) == 1)
 	{
-		i = 0;
-		while (i < 11 && ft_strcmp(line, instr[i]))
-			i++;
+		instr_nb = ft_instr_cmp(line);
 		free(line);
 		line = NULL;
-		if (i == 11)
+		if (instr_nb == 11)
 			return (0);
-		apply_instr(ps, i, 0);
+		apply_instr(ps, instr_nb, 0);
 	}
-	return (1);
+	return (ret == -1 ? 0 : 1);
+}
+
+int				ft_instr_cmp(char *line)
+{
+	static char	*instr[] = {"sa", "sb", "ss", "pa", "pb", "ra",
+		"rb", "rr", "rra", "rrb", "rrr"};
+	int			instr_nb;
+
+	instr_nb = 0;
+	while (instr_nb < 11 && ft_strcmp(line, instr[instr_nb]))
+		instr_nb++;
+	return (instr_nb);
 }
 
 int				ft_realloc(int **tab, int size, int to_add)
