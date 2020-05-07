@@ -14,11 +14,10 @@
 #include "includes/libft.h"
 
 /*
-** Cette fonction renvoie une copie de la chaîne de caractères str
-** jusqu'au caractère c inclus (si incl_c est différent de 0) ou exclu
-** (si incl_c vaut 0).
-** Si c ne se trouve pas dans str, alors NULL est renvoyé si copy_all vaut 0,
-** une copie de str est renvoyée si copy_all est différent de 0.
+** This function returns a copy of the string str until the char c included
+** (if incl_c is different from 0) or excluded (if incl_c equals 0).
+** If c is not in str, NULL is returned if copy_all equals 0, otherwise
+** a copy of str is returned.
 */
 
 char	*ft_strcdup(const char *str, char c, int incl_c, int copy_all)
