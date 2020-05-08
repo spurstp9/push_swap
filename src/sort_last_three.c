@@ -15,7 +15,7 @@
 int	sort_last_three(t_struct *ps)
 {
 	int tmp[3];
-	
+
 	if (stack_size(&ps->stack_a) != 3)
 		return (sort_last_two(ps));
 	tmp[0] = ps->stack_a.tab[ps->stack_a.begin];
