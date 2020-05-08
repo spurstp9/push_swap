@@ -12,18 +12,18 @@
 
 #include "../inc/prototypes.h"
 
-void	sort_algo_loop(t_struct *ps, int nb)
+void	chunk_sort_loop(t_struct *ps, int nb)
 {
 	t_chunk ch;
 
 	init_chunk(ps, &ch, nb);
 	while (ps->stack_a.begin < ps->stack_a.size)
-		sort_algo(ps, &ch, nb);
+		chunk_sort(ps, &ch, nb);
 	while (!is_stack_empty(&ps->stack_b))
 		ft_move_back_to_a(ps);
 }
 
-int		sort_algo(t_struct *ps, t_chunk *ch, int nb)
+int		chunk_sort(t_struct *ps, t_chunk *ch, int nb)
 {
 	int rank_up;
 	int rank_down;
@@ -37,7 +37,7 @@ int		sort_algo(t_struct *ps, t_chunk *ch, int nb)
 		ch->chunk_nb++;
 		if (ch->chunk_nb == nb && ch->chunk_max < ch->stack_max)
 			ch->chunk_max = ch->stack_max;
-		return (sort_algo(ps, ch, nb));
+		return (chunk_sort(ps, ch, nb));
 	}
 	rank_down = get_rank(ps->stack_a, *ch, 1);
 	rank_to_move = (rank_up - ps->stack_a.begin < ps->stack_a.size

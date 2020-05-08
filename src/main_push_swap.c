@@ -38,17 +38,9 @@ int		main(int argc, char **argv)
 void	find_instr(t_struct *ps)
 {
 	if (stack_size(&ps->stack_a) <= 20)
-	{
-		while (stack_size(&ps->stack_a) > 3
-			&& !check_order(ps->stack_a))
-			selection_sort(ps);
-		if (stack_size(&ps->stack_a) <= 3)
-			sort_last_three(ps);
-		while (!is_stack_empty(&ps->stack_b))
-			apply_instr(ps, PA, 1);
-	}
+		selection_sort_loop(ps);
 	else if (ps->stack_a.size < 500)
-		sort_algo_loop(ps, 5);
+		chunk_sort_loop(ps, 5);
 	else
-		sort_algo_loop(ps, 11);
+		chunk_sort_loop(ps, 11);
 }
