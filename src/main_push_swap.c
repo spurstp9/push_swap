@@ -37,17 +37,14 @@ int		main(int argc, char **argv)
 
 void	find_instr(t_struct *ps)
 {
-	if (ps->stack_a.size == 2 && ps->stack_a.tab[0] > ps->stack_a.tab[1])
-		apply_instr(ps, SA, 1);
-	else if (ps->stack_a.size == 3)
-		deal_with_three(ps);
-	else if (ps->stack_a.size <= 20)
+	if (ps->stack_a.size <= 20)
 	{
-		if (ps->stack_a.tab[0] > ps->stack_a.tab[1])
-			apply_instr(ps, SA, 1);
 		while (ps->stack_a.begin < ps->stack_a.size - 1
 			&& !check_order(ps->stack_a))
 			selection_sort(ps);
+		if (ps->stack_a.begin < ps->stack_a.size - 1)
+			if (ps->stack_a.tab[0] > ps->stack_a.tab[1])
+				apply_instr(ps, SA, 1);
 		while (!is_stack_empty(&ps->stack_b))
 			apply_instr(ps, PA, 1);
 	}
