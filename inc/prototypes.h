@@ -37,9 +37,8 @@ void			apply_rr(t_stack *stack);
 void			apply_s(t_stack *stack);
 int				check_args(int argc, char **argv, t_struct *ps);
 int				check_instr(t_struct *ps);
-int				check_order(t_stack stack_a);
 int				check_line(t_struct *ps, char *arg, int *nb);
-void			deal_with_three(t_struct *ps);
+int				check_order(t_stack stack_a);
 void			find_instr(t_struct *ps);
 int				ft_free_and_return(t_struct *ps);
 void			ft_init(t_struct *ps);
@@ -59,9 +58,11 @@ int				get_min(t_stack stack);
 int				get_min_index(t_stack stack);
 int				get_rank(t_stack stack, t_chunk ch, char up_or_down);
 void			init_chunk(t_struct *ps, t_chunk *ch, int nb);
-void			sort_algo_loop(t_struct *ps, int nb);
 int				is_stack_empty(t_stack *stack);
 void			selection_sort(t_struct *ps);
+void			sort_algo_loop(t_struct *ps, int nb);
 int				sort_algo(t_struct *ps, t_chunk *ch, int nb);
+void			sort_last_three(t_struct *ps);
+int				stack_size(t_stack *stack);
 
 #endif

@@ -68,3 +68,8 @@ int		ft_free_and_return(t_struct *ps)
 	}
 	return (0);
 }
+
+int		stack_size(t_stack *stack)
+{
+	return (stack->size - stack->begin);
+}

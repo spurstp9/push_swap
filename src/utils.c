@@ -24,7 +24,7 @@ void	ft_init(t_struct *ps)
 
 int		is_stack_empty(t_stack *stack)
 {
-	if (stack->begin == stack->size)
+	if (stack_size(stack) < 1)
 		return (1);
 	return (0);
 }

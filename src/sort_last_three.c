@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   deal_with_three.c                                  :+:      :+:    :+:   */
+/*   sort_last_three.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,12 +12,18 @@
 
 #include "../inc/prototypes.h"
 
-void	deal_with_three(t_struct *ps)
+void	sort_last_three(t_struct *ps)
 {
 	int first;
 	int second;
 	int third;
 
+	if (ps->stack_a.begin == ps->stack_a.size - 2)
+	{
+		if (!check_order(ps->stack_a))
+			apply_instr(ps, SA, 1);
+		return ;
+	}
 	first = ps->stack_a.tab[ps->stack_a.begin];
 	second = ps->stack_a.tab[ps->stack_a.begin + 1];
 	third = ps->stack_a.tab[ps->stack_a.begin + 2];
