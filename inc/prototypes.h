@@ -63,7 +63,8 @@ void			init_chunk(t_struct *ps, t_chunk *ch, int nb);
 int				is_stack_empty(t_stack *stack);
 void			selection_sort(t_struct *ps);
 void			selection_sort_loop(t_struct *ps);
-void			sort_last_three(t_struct *ps);
+int				sort_last_three(t_struct *ps);
+int				sort_last_two(t_struct *ps);
 int				stack_size(t_stack *stack);
 
 #endif
