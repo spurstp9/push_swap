@@ -6,7 +6,7 @@
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:05:07 by agardina          #+#    #+#             */
-/*   Updated: 2020/03/30 19:05:16 by agardina         ###   ########.fr       */
+/*   Updated: 2020/05/09 18:52:11 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int				ft_realloc(int **tab, int size, int to_add)
 	if (!(tmp = (int*)malloc(sizeof(int) * size)))
 		return (0);
 	if (*tab)
-		memcpy(tmp, *tab, size * sizeof(int));
+		ft_memcpy(tmp, *tab, size * sizeof(int));
 	free(*tab);
 	tmp[size - 1] = to_add;
 	*tab = tmp;
