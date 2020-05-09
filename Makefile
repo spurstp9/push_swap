@@ -69,8 +69,6 @@ fclean: clean
 	@rm -rf $(CHECKER_NAME)
 	@rm -rf $(PUSH_SWAP_NAME)
 
-re:
-	@$(MAKE) fclean
-	@$(MAKE) all
+re: fclean all
 
 .PHONY: all clean fclean re
