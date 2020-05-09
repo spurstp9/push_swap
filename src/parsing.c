@@ -55,14 +55,29 @@ int				check_instr(t_struct *ps)
 
 int				ft_instr_cmp(char *line)
 {
-	static char	*instr[] = {"sa", "sb", "ss", "pa", "pb", "ra",
-		"rb", "rr", "rra", "rrb", "rrr"};
-	int			instr_nb;
-
-	instr_nb = 0;
-	while (instr_nb < 11 && ft_strcmp(line, instr[instr_nb]))
-		instr_nb++;
-	return (instr_nb);
+	if (!ft_strcmp(line, "sa"))
+		return (0);
+	else if (!ft_strcmp(line, "sb"))
+		return (1);
+	else if (!ft_strcmp(line, "ss"))
+		return (2);
+	else if (!ft_strcmp(line, "pa"))
+		return (3);
+	else if (!ft_strcmp(line, "pb"))
+		return (4);
+	else if (!ft_strcmp(line, "ra"))
+		return (5);
+	else if (!ft_strcmp(line, "rb"))
+		return (6);
+	else if (!ft_strcmp(line, "rr"))
+		return (7);
+	else if (!ft_strcmp(line, "rra"))
+		return (8);
+	else if (!ft_strcmp(line, "rrb"))
+		return (9);
+	else if (!ft_strcmp(line, "rrr"))
+		return (10);
+	return (11);
 }
 
 int				ft_realloc(int **tab, int size, int to_add)
