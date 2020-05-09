@@ -48,12 +48,12 @@ int	read_and_stock(const int fd, char **stock)
 
 int	get_next_line(const int fd, char **line)
 {
-	static char	*stock[OPEN_MAX];
+	static char	*stock[_SC_OPEN_MAX];
 	char		*tmp;
 	char		*end;
 	int			ret;
 
-	if (fd < 0 || fd > OPEN_MAX || !line || BUFF_SIZE < 1)
+	if (fd < 0 || fd > _SC_OPEN_MAX || !line || BUFF_SIZE < 1)
 		return (-1);
 	ret = read_and_stock(fd, &stock[fd]);
 	if (ret == -1 || (ret == 0 && (!stock[fd] || !stock[fd][0])))
