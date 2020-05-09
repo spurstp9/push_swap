@@ -6,13 +6,13 @@
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 17:05:07 by agardina          #+#    #+#             */
-/*   Updated: 2020/05/09 18:52:11 by agardina         ###   ########.fr       */
+/*   Updated: 2020/05/09 22:28:23 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/prototypes.h"
 
-int				check_args(int argc, char **argv, t_struct *ps)
+int	check_args(int argc, char **argv, t_struct *ps)
 {
 	int i;
 	int	nb;
@@ -34,26 +34,36 @@ int				check_args(int argc, char **argv, t_struct *ps)
 	return (1);
 }
 
-int				check_instr(t_struct *ps)
+int	check_instr(t_struct *ps)
 {
-	int			instr_nb;
-	char		*line;
-	int			ret;
+	char	buf[5];
+	int		ret;
+	int		index;
+	int		instr_nb;
 
-	line = NULL;
-	while ((ret = get_next_line(0, &line)) == 1)
+	index = 0;
+	while ((ret = read(0, buf + index, 1)) > 0)
 	{
-		instr_nb = ft_instr_cmp(line);
-		free(line);
-		line = NULL;
-		if (instr_nb == 11)
-			return (0);
-		apply_instr(ps, instr_nb, 0);
+		if (buf[index] != '\n')
+		{
+			if (index < 3)
+				index++;
+			else
+				return (0);
+		}
+		else
+		{
+			buf[index] = '\0';
+			if ((instr_nb = ft_instr_cmp(buf)) == 11)
+				return (0);
+			apply_instr(ps, instr_nb, 0);
+			index = 0;
+		}
 	}
 	return (ret == -1 ? 0 : 1);
 }
 
-int				ft_instr_cmp(char *line)
+int	ft_instr_cmp(char *line)
 {
 	if (!ft_strcmp(line, "sa"))
 		return (0);
@@ -80,7 +90,7 @@ int				ft_instr_cmp(char *line)
 	return (11);
 }
 
-int				ft_realloc(int **tab, int size, int to_add)
+int	ft_realloc(int **tab, int size, int to_add)
 {
 	int			*tmp;
 
@@ -95,7 +105,7 @@ int				ft_realloc(int **tab, int size, int to_add)
 	return (1);
 }
 
-int				check_line(t_struct *ps, char *arg, int *nb)
+int	check_line(t_struct *ps, char *arg, int *nb)
 {
 	int i;
 
