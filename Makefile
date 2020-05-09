@@ -42,32 +42,34 @@ $(CHECKER_NAME): $(CHECKER_OBJ) $(LIB)
 	@echo "$(CHECKER_NAME) [Compiling...]"
 	@gcc $(CHECKER_OBJ) $(LIB_FLAGS) -o $(CHECKER_NAME)
 	@echo "\033[A\033[K\033[A"
-	@echo "$(CHECKER_NAME) [\033[32mOK\033[0m]"
+	@echo "\033[1m$(CHECKER_NAME)\033[0m [\033[32mOK\033[0m]"
 
 $(PUSH_SWAP_NAME): $(PUSH_SWAP_OBJ) $(LIB)
 	@echo "$(PUSH_SWAP_NAME) [Compiling...]"
 	@gcc $(PUSH_SWAP_OBJ) $(LIB_FLAGS) -o $(PUSH_SWAP_NAME)
 	@echo "\033[A\033[K\033[A"
-	@echo "$(PUSH_SWAP_NAME) [\033[32mOK\033[0m]"
+	@echo "\033[1m$(PUSH_SWAP_NAME)\033[0m [\033[32mOK\033[0m]"
 
 $(LIB):
-	@echo "Libft compilation [...]"
 	@make -C $(LIB_FOLDER)
-	@echo "\033[A\033[K\033[A"
-	@echo "Libft compilation [\033[32mOK\033[0m]"
 
 $(OBJ_FOLDER)%.o:$(SRC_FOLDER)%.c $(HDR)
 	@mkdir -p $(OBJ_FOLDER)
 	@$(CC) $(CFLAGS) -I$(HDR_FOLDER) -I$(LIB_INC) -c -o $@ $<
+	@echo "$* [Compiling...]"
+	@echo "\033[A\033[K\033[A"
+	@echo "$*.o [\033[32mOK\033[0m]"
 
 clean:
-	@make -C $(LIB_FOLDER) clean
 	@rm -rf $(OBJ) $(OBJ_FOLDER)
+	@echo "Object files related to push_swap deleted"
 
 fclean: clean
 	@make -C $(LIB_FOLDER) fclean
 	@rm -rf $(CHECKER_NAME)
 	@rm -rf $(PUSH_SWAP_NAME)
+	@echo "$(PUSH_SWAP_NAME) deleted"
+	@echo "$(CHECKER_NAME) deleted"
 
 re: fclean all
 

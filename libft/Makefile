@@ -27,19 +27,22 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@ar -rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
+	@echo "\033[1m$(NAME)\033[0m [\033[32mOK\033[0m]"
 
 %.o:%.c $(HDR)
 	@$(CC) $(CFLAGS) -I$(HDR_FOLDER) -c -o $@ $<
-
+	@echo "$* [Compiling...]"
+	@echo "\033[A\033[K\033[A"
+	@echo "$*.o [\033[32mOK\033[0m]"
 
 clean:
 	@rm -f $(OBJ)
+	@echo "Object files related to libft deleted"
 
 fclean: clean
 	@rm -f $(NAME)
+	@echo "$(NAME) deleted"
 
-re:
-	$(MAKE) fclean
-	$(MAKE) all
+re: fclean all
 
 .PHONY: all clean fclean re
