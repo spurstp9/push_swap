@@ -20,7 +20,8 @@ CHECKER_SRC = $(addprefix $(SRC_FOLDER), $(CHECKER_SRC_FILES))
 
 PUSH_SWAP_SRC_FILES = apply_instr.c check_order.c chunk_sort.c \
 		chunk_sort2.c ft_p.c ft_r.c ft_rr.c ft_s.c main_push_swap.c \
-		parsing.c selection_sort.c sort_last_three.c utils.c utils2.c
+		parsing.c replace_values_by_rank.c selection_sort.c sort_last_three.c \
+	utils.c utils2.c
 PUSH_SWAP_SRC = $(addprefix $(SRC_FOLDER), $(PUSH_SWAP_SRC_FILES))
 
 HDR_FOLDER = ./inc/

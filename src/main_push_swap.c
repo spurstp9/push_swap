@@ -24,6 +24,8 @@ int		main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (ft_free_and_return(&ps));
 	}
+	if (!replace_values_by_rank(&ps.stack_a))
+		return (ft_free_and_return(&ps));
 	if (!(ps.stack_b.tab = (int*)malloc(sizeof(int) * ps.stack_a.size)))
 		return (ft_free_and_return(&ps));
 	ft_bzero(ps.stack_b.tab, ps.stack_a.size * sizeof(int));

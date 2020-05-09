@@ -61,6 +61,7 @@ int				get_min_index(t_stack stack);
 int				get_rank(t_stack stack, t_chunk ch, char up_or_down);
 void			init_chunk(t_struct *ps, t_chunk *ch, int nb);
 int				is_stack_empty(t_stack *stack);
+int				replace_values_by_rank(t_stack *stack);
 void			selection_sort(t_struct *ps);
 void			selection_sort_loop(t_struct *ps);
 int				sort_last_three(t_struct *ps);
