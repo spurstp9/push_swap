@@ -45,11 +45,11 @@ void	ft_move_to_b(t_struct *ps, int rank, int instr)
 		apply_instr(ps, instr, 1);
 	apply_instr(ps, PB, 1);
 	min_b = get_min(ps->stack_b);
-	if (nb < min_b)
-		apply_instr(ps, RB, 1);
-	if (ps->stack_b.begin < ps->stack_b.size - 1
-		&& nb < ps->stack_b.tab[ps->stack_b.begin + 1])
-		apply_instr(ps, SB, 1);
+	//if (nb < min_b)
+		//apply_instr(ps, RB, 1);
+	//if (ps->stack_b.begin < ps->stack_b.size - 1
+		//&& nb < ps->stack_b.tab[ps->stack_b.begin + 1])
+		//apply_instr(ps, SB, 1);
 }
 
 void	ft_move_back_to_a(t_struct *ps)

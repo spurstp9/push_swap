@@ -17,7 +17,7 @@ void	chunk_sort_loop(t_struct *ps, int nb)
 	t_chunk ch;
 
 	init_chunk(ps, &ch, nb);
-	while (ps->stack_a.begin < ps->stack_a.size)
+	while (!check_order(ps->stack_a))
 		chunk_sort(ps, &ch, nb);
 	while (!is_stack_empty(&ps->stack_b))
 		ft_move_back_to_a(ps);
