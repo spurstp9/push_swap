@@ -34,9 +34,9 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (ft_free_and_return(&ps));
 	}
-	if (!check_order(ps.stack_a))
-		write(1, "KO\n", 3);
-	else
+	if (check_order(ps.stack_a) && is_stack_empty(&ps.stack_b))
 		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 	return (ft_free_and_return(&ps));
 }

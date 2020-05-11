@@ -2,9 +2,9 @@ CHECKER_NAME = checker
 
 PUSH_SWAP_NAME = push_swap
 
-CC = gcc
+CC = clang
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Wpadded -fsanitize=address,undefined -g3
 
 LIB_FOLDER = ./libft/
 LIB_INC = ./libft/includes
@@ -40,13 +40,13 @@ all: $(CHECKER_NAME) $(PUSH_SWAP_NAME)
 
 $(CHECKER_NAME): $(CHECKER_OBJ) $(LIB)
 	@echo "$(CHECKER_NAME) [Compiling...]"
-	@gcc $(CHECKER_OBJ) $(LIB_FLAGS) -o $(CHECKER_NAME)
+	@gcc $(CHECKER_OBJ) $(LIB_FLAGS) -fsanitize=address,undefined -g3 -o $(CHECKER_NAME)
 	@echo "\033[A\033[K\033[A"
 	@echo "\033[1m$(CHECKER_NAME)\033[0m [\033[32mOK\033[0m]"
 
 $(PUSH_SWAP_NAME): $(PUSH_SWAP_OBJ) $(LIB)
 	@echo "$(PUSH_SWAP_NAME) [Compiling...]"
-	@gcc $(PUSH_SWAP_OBJ) $(LIB_FLAGS) -o $(PUSH_SWAP_NAME)
+	@gcc $(PUSH_SWAP_OBJ) $(LIB_FLAGS) -fsanitize=address,undefined -g3 -o $(PUSH_SWAP_NAME)
 	@echo "\033[A\033[K\033[A"
 	@echo "\033[1m$(PUSH_SWAP_NAME)\033[0m [\033[32mOK\033[0m]"
 

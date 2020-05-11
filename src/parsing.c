@@ -15,19 +15,19 @@
 int	check_args(int argc, char **argv, t_struct *ps)
 {
 	int i;
-	int	nb;
+	int	nb_to_add;
 
 	i = 1;
-	nb = 0;
+	nb_to_add = 0;
 	while (i < argc)
 	{
-		if (!check_line(ps, argv[i], &nb))
+		if (!check_line(ps, argv[i], &nb_to_add))
 		{
 			free(ps->stack_a.tab);
 			ps->stack_a.tab = NULL;
 			return (0);
 		}
-		if (!ft_realloc(&(ps->stack_a.tab), ++ps->stack_a.size, nb))
+		if (!ft_realloc(&ps->stack_a, nb_to_add))
 			return (0);
 		i++;
 	}
@@ -90,18 +90,25 @@ int	ft_instr_cmp(char *line)
 	return (11);
 }
 
-int	ft_realloc(int **tab, int size, int to_add)
+int	ft_realloc(t_stack *stack, int nb_to_add)
 {
-	int			*tmp;
+	int *tmp;
+	int i;
 
-	tmp = NULL;
-	if (!(tmp = (int*)malloc(sizeof(int) * size)))
+	tmp = (int*)malloc(sizeof(int) * (stack->size + 1));
+	if (!tmp)
 		return (0);
-	if (*tab)
-		ft_memcpy(tmp, *tab, size * sizeof(int));
-	free(*tab);
-	tmp[size - 1] = to_add;
-	*tab = tmp;
+	i = 0;
+	while (i < stack->size)
+	{
+		tmp[i] = stack->tab[i];
+		i++;
+	}
+	tmp[i] = nb_to_add;
+	if (stack->tab)
+		free(stack->tab);
+	stack->tab = tmp;
+	stack->size++;
 	return (1);
 }
 
