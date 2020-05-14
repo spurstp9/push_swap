@@ -31,7 +31,7 @@ typedef struct		s_word
 int					ft_abs(int a);
 int					ft_atoi_base(char *str, char *base);
 int					ft_atoi(const char *str);
-long				ft_atol(const char *str);
+long				ft_atol(char *str, char **end);
 void				ft_bzero(void *s, size_t n);
 char				*ft_convert_base(char *nbr, char *base_from, char *base_to);
 int					ft_isalnum(int c);

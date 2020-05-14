@@ -12,17 +12,7 @@
 
 #include "../inc/prototypes.h"
 
-void	selection_sort_loop(t_struct *ps)
-{
-	while (stack_size(&ps->stack_a) > 3 && !check_order(ps->stack_a))
-		selection_sort(ps);
-	if (stack_size(&ps->stack_a) <= 3)
-		sort_last_three(ps);
-	while (!is_stack_empty(&ps->stack_b))
-		apply_instr(ps, PA, 1);
-}
-
-void	selection_sort(t_struct *ps)
+static void	selection_sort(t_struct *ps)
 {
 	int min;
 	int min_index;
@@ -41,4 +31,14 @@ void	selection_sort(t_struct *ps)
 	}
 	if (!check_order(ps->stack_a))
 		apply_instr(ps, PB, 1);
+}
+
+void		selection_sort_loop(t_struct *ps)
+{
+	while (stack_size(&ps->stack_a) > 3 && !check_order(ps->stack_a))
+		selection_sort(ps);
+	if (stack_size(&ps->stack_a) <= 3)
+		sort_last_three(ps);
+	while (!is_stack_empty(&ps->stack_b))
+		apply_instr(ps, PA, 1);
 }

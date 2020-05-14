@@ -1,10 +1,7 @@
-CHECKER_NAME = checker
-
-PUSH_SWAP_NAME = push_swap
-
 CC = clang
-
 CFLAGS = -Wall -Wextra -Werror -Wpadded -fsanitize=address,undefined -g3
+CHECKER_NAME = checker
+PUSH_SWAP_NAME = push_swap
 
 LIB_FOLDER = ./libft/
 LIB_INC = ./libft/includes
@@ -13,56 +10,75 @@ LIB_FLAGS = -L $(LIB_FOLDER) -lft
 LIB = $(addprefix $(LIB_FOLDER), $(LIB_NAME))
 
 SRC_FOLDER = ./src/
+OBJ_FOLDER = ./obj/
+SRC_FILES = apply_instr.c check_args.c check_args2.c check_instr.c check_order.c \
+				check_stdin.c chunk_sort.c chunk_sort2.c ft_p.c ft_r.c ft_rr.c ft_s.c \
+				main_checker.c main_push_swap.c replace_values_by_rank.c selection_sort.c \
+				sort_last_three.c utils.c utils2.c
+SRC = $(addprefix $(SRC_FOLDER), $(SRC_FILES))
 
-CHECKER_SRC_FILES = apply_instr.c check_order.c ft_p.c ft_r.c ft_rr.c \
-		ft_s.c main_checker.c parsing.c utils.c utils2.c
-CHECKER_SRC = $(addprefix $(SRC_FOLDER), $(CHECKER_SRC_FILES))
-
-PUSH_SWAP_SRC_FILES = apply_instr.c check_order.c chunk_sort.c \
-		chunk_sort2.c ft_p.c ft_r.c ft_rr.c ft_s.c main_push_swap.c \
-		parsing.c replace_values_by_rank.c selection_sort.c sort_last_three.c \
-	utils.c utils2.c
-PUSH_SWAP_SRC = $(addprefix $(SRC_FOLDER), $(PUSH_SWAP_SRC_FILES))
+CHECKER_OBJ_FILES = apply_instr.o \
+						check_args.o \
+						check_args2.o \
+						check_instr.o \
+						check_order.o \
+						ft_p.o \
+						ft_r.o \
+						ft_rr.o \
+						ft_s.o \
+						main_checker.o \
+						utils.o \
+						utils2.o
+CHECKER_OBJ = $(addprefix $(OBJ_FOLDER), $(CHECKER_OBJ_FILES))
+PUSH_SWAP_OBJ_FILES = apply_instr.o \
+						check_args.o \
+						check_args2.o \
+						check_order.o \
+						chunk_sort.o \
+						chunk_sort2.o \
+						ft_p.o \
+						ft_r.o \
+						ft_rr.o \
+						ft_s.o \
+						main_push_swap.o \
+						replace_values_by_rank.o \
+						selection_sort.o \
+						sort_last_three.o \
+						utils.o \
+						utils2.o
+PUSH_SWAP_OBJ = $(addprefix $(OBJ_FOLDER), $(PUSH_SWAP_OBJ_FILES))
 
 HDR_FOLDER = ./inc/
 HDR_FILES = prototypes.h structs.h
 HDR = $(addprefix $(HDR_FOLDER), $(HDR_FILES))
 
-OBJ_FOLDER = ./obj/
-
-CHECKER_OBJ_FILES = $(CHECKER_SRC_FILES:.c=.o)
-CHECKER_OBJ = $(addprefix $(OBJ_FOLDER), $(CHECKER_OBJ_FILES))
-
-PUSH_SWAP_OBJ_FILES = $(PUSH_SWAP_SRC_FILES:.c=.o)
-PUSH_SWAP_OBJ = $(addprefix $(OBJ_FOLDER), $(PUSH_SWAP_OBJ_FILES))
-
-all: $(CHECKER_NAME) $(PUSH_SWAP_NAME)
+all: $(OBJ_FOLDER) $(CHECKER_NAME) $(PUSH_SWAP_NAME)
 
 $(CHECKER_NAME): $(CHECKER_OBJ) $(LIB)
-	@echo "$(CHECKER_NAME) [Compiling...]"
-	@gcc $(CHECKER_OBJ) $(LIB_FLAGS) -fsanitize=address,undefined -g3 -o $(CHECKER_NAME)
-	@echo "\033[A\033[K\033[A"
-	@echo "\033[1m$(CHECKER_NAME)\033[0m [\033[32mOK\033[0m]"
+	@$(CC) $(CFLAGS) $(CHECKER_OBJ) $(LIB_FLAGS) -o $(CHECKER_NAME)
+	@echo "\n\033[1m\033[3m$(CHECKER_NAME)\033[0m [\033[32mOK\033[0m]\n"
 
 $(PUSH_SWAP_NAME): $(PUSH_SWAP_OBJ) $(LIB)
-	@echo "$(PUSH_SWAP_NAME) [Compiling...]"
-	@gcc $(PUSH_SWAP_OBJ) $(LIB_FLAGS) -fsanitize=address,undefined -g3 -o $(PUSH_SWAP_NAME)
-	@echo "\033[A\033[K\033[A"
-	@echo "\033[1m$(PUSH_SWAP_NAME)\033[0m [\033[32mOK\033[0m]"
+	@$(CC) $(CFLAGS) $(PUSH_SWAP_OBJ) $(LIB_FLAGS) -o $(PUSH_SWAP_NAME)
+	@echo "\n\033[1m\033[3m$(PUSH_SWAP_NAME)\033[0m [\033[32mOK\033[0m]"
 
 $(LIB):
+	@echo "\n\033[3mLibft creation\033[0m\n"
 	@make -C $(LIB_FOLDER)
 
+$(OBJ_FOLDER):
+	@mkdir $@
+
 $(OBJ_FOLDER)%.o:$(SRC_FOLDER)%.c $(HDR)
-	@mkdir -p $(OBJ_FOLDER)
 	@$(CC) $(CFLAGS) -I$(HDR_FOLDER) -I$(LIB_INC) -c -o $@ $<
 	@echo "$* [Compiling...]"
 	@echo "\033[A\033[K\033[A"
 	@echo "$*.o [\033[32mOK\033[0m]"
 
 clean:
-	@rm -rf $(OBJ) $(OBJ_FOLDER)
-	@echo "Object files related to push_swap deleted"
+	@make -C $(LIB_FOLDER) clean
+	@rm -rf $(CHECKER_OBJ) $(PUSH_SWAP_OBJ) $(OBJ_FOLDER)
+	@echo "Object files related to push_swap and checker deleted"
 
 fclean: clean
 	@make -C $(LIB_FOLDER) fclean

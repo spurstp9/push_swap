@@ -12,7 +12,17 @@
 
 #include "../inc/prototypes.h"
 
-void	ft_p(t_struct *ps, int instr_nb, char write_it)
+static void	apply_p(t_stack *dest, t_stack *source)
+{
+	if (source->size - source->begin > 0)
+	{
+		dest->begin--;
+		dest->tab[dest->begin] = source->tab[source->begin];
+		source->begin++;
+	}
+}
+
+void		ft_p(t_struct *ps, int instr_nb, char write_it)
 {
 	if (instr_nb == PA)
 	{
@@ -25,15 +35,5 @@ void	ft_p(t_struct *ps, int instr_nb, char write_it)
 		apply_p(&ps->stack_b, &ps->stack_a);
 		if (write_it)
 			write(1, "pb\n", 3);
-	}
-}
-
-void	apply_p(t_stack *dest, t_stack *source)
-{
-	if (source->size - source->begin > 0)
-	{
-		dest->begin--;
-		dest->tab[dest->begin] = source->tab[source->begin];
-		source->begin++;
 	}
 }

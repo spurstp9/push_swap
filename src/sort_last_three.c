@@ -12,7 +12,14 @@
 
 #include "../inc/prototypes.h"
 
-int	sort_last_three(t_struct *ps)
+static int	sort_last_two(t_struct *ps)
+{
+	if (!check_order(ps->stack_a))
+		apply_instr(ps, SA, 1);
+	return (0);
+}
+
+int			sort_last_three(t_struct *ps)
 {
 	int tmp[3];
 
@@ -37,12 +44,5 @@ int	sort_last_three(t_struct *ps)
 	}
 	else if (tmp[0] < tmp[1] && tmp[1] > tmp[2] && tmp[0] > tmp[2])
 		apply_instr(ps, RRA, 1);
-	return (0);
-}
-
-int	sort_last_two(t_struct *ps)
-{
-	if (!check_order(ps->stack_a))
-		apply_instr(ps, SA, 1);
 	return (0);
 }

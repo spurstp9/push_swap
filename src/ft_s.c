@@ -12,7 +12,19 @@
 
 #include "../inc/prototypes.h"
 
-void	ft_s(t_struct *ps, int instr_nb, char write_it)
+static void	apply_s(t_stack *stack)
+{
+	int tmp;
+
+	if (1 <= stack->size - stack->begin)
+	{
+		tmp = stack->tab[stack->begin];
+		stack->tab[stack->begin] = stack->tab[stack->begin + 1];
+		stack->tab[stack->begin + 1] = tmp;
+	}
+}
+
+void		ft_s(t_struct *ps, int instr_nb, char write_it)
 {
 	if (instr_nb == SA || instr_nb == SS)
 		apply_s(&ps->stack_a);
@@ -26,17 +38,5 @@ void	ft_s(t_struct *ps, int instr_nb, char write_it)
 			write(1, "sb\n", 3);
 		else if (instr_nb == SS)
 			write(1, "ss\n", 3);
-	}
-}
-
-void	apply_s(t_stack *stack)
-{
-	int tmp;
-
-	if (1 <= stack->size - stack->begin)
-	{
-		tmp = stack->tab[stack->begin];
-		stack->tab[stack->begin] = stack->tab[stack->begin + 1];
-		stack->tab[stack->begin + 1] = tmp;
 	}
 }

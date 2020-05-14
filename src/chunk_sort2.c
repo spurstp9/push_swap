@@ -68,13 +68,3 @@ void	ft_move_back_to_a(t_struct *ps)
 		apply_instr(ps, instr, 1);
 	apply_instr(ps, PA, 1);
 }
-
-void	init_chunk(t_struct *ps, t_chunk *ch, int nb)
-{
-	ch->stack_min = get_min(ps->stack_a);
-	ch->stack_max = get_max(ps->stack_a);
-	ch->chunk_min = ch->stack_min;
-	ch->interval = (ch->stack_max - ch->stack_min) / nb;
-	ch->chunk_max = ch->stack_min + ch->interval;
-	ch->chunk_nb = 1;
-}

@@ -12,14 +12,30 @@
 
 #include "../inc/prototypes.h"
 
-int		main(int argc, char **argv)
+static void	find_instr(t_struct *ps)
+{
+	if (stack_size(&ps->stack_a) <= 20)
+		selection_sort_loop(ps);
+	else if (ps->stack_a.size <= 100)
+		chunk_sort_loop(ps, 5);
+	else if (ps->stack_a.size <= 200)
+		chunk_sort_loop(ps, 7);
+	else if (ps->stack_a.size <= 300)
+		chunk_sort_loop(ps, 9);
+	else if (ps->stack_a.size <= 400)
+		chunk_sort_loop(ps, 10);
+	else
+		chunk_sort_loop(ps, 11);
+}
+
+int			main(int argc, char **argv)
 {
 	t_struct	ps;
 
 	if (argc == 1)
 		return (0);
 	ft_init(&ps);
-	if (!check_args(argc, argv, &ps))
+	if (!deal_args(argc, argv, &ps))
 	{
 		write(2, "Error\n", 6);
 		return (ft_free_and_return(&ps));
@@ -35,14 +51,4 @@ int		main(int argc, char **argv)
 		find_instr(&ps);
 	ft_free_and_return(&ps);
 	return (0);
-}
-
-void	find_instr(t_struct *ps)
-{
-	if (stack_size(&ps->stack_a) <= 20)
-		selection_sort_loop(ps);
-	else if (ps->stack_a.size < 500)
-		chunk_sort_loop(ps, 5);
-	else
-		chunk_sort_loop(ps, 11);
 }

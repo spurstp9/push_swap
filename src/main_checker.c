@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	ft_init(&ps);
-	if (!check_args(argc, argv, &ps))
+	if (!deal_args(argc, argv, &ps))
 	{
 		write(2, "Error\n", 6);
 		return (ft_free_and_return(&ps));

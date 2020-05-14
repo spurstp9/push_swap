@@ -12,7 +12,22 @@
 
 #include "../inc/prototypes.h"
 
-void	ft_rr(t_struct *ps, int instr_nb, char write_it)
+static void	apply_rr(t_stack *stack)
+{
+	int i;
+	int bottom;
+
+	i = stack->size - 1;
+	bottom = stack->tab[i];
+	while (stack->begin < i)
+	{
+		stack->tab[i] = stack->tab[i - 1];
+		stack->tab[i - 1] = bottom;
+		i--;
+	}
+}
+
+void		ft_rr(t_struct *ps, int instr_nb, char write_it)
 {
 	if (ps->stack_a.size - 1 - ps->stack_a.begin > 0
 		&& (instr_nb == RRA || instr_nb == RRR))
@@ -28,20 +43,5 @@ void	ft_rr(t_struct *ps, int instr_nb, char write_it)
 			write(1, "rrb\n", 4);
 		else if (instr_nb == RRR)
 			write(1, "rrr\n", 4);
-	}
-}
-
-void	apply_rr(t_stack *stack)
-{
-	int i;
-	int bottom;
-
-	i = stack->size - 1;
-	bottom = stack->tab[i];
-	while (stack->begin < i)
-	{
-		stack->tab[i] = stack->tab[i - 1];
-		stack->tab[i - 1] = bottom;
-		i--;
 	}
 }
