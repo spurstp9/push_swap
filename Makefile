@@ -62,8 +62,8 @@ $(PUSH_SWAP_NAME): $(PUSH_SWAP_OBJ) $(LIB)
 	@$(CC) $(CFLAGS) $(PUSH_SWAP_OBJ) $(LIB_FLAGS) -o $(PUSH_SWAP_NAME)
 	@echo "\n\033[1m\033[3m$(PUSH_SWAP_NAME)\033[0m [\033[32mOK\033[0m]"
 
-$(LIB):
-	@echo "\n\033[3mLibft creation\033[0m\n"
+$(LIB): FORCE
+	@echo "\n"
 	@make -C $(LIB_FOLDER)
 
 $(OBJ_FOLDER):
@@ -77,7 +77,8 @@ $(OBJ_FOLDER)%.o:$(SRC_FOLDER)%.c $(HDR)
 
 clean:
 	@make -C $(LIB_FOLDER) clean
-	@rm -rf $(CHECKER_OBJ) $(PUSH_SWAP_OBJ) $(OBJ_FOLDER)
+	@rm -rf $(CHECKER_OBJ) $(PUSH_SWAP_OBJ)
+	@rm -rf $(OBJ_FOLDER)
 	@echo "Object files related to push_swap and checker deleted"
 
 fclean: clean
@@ -89,4 +90,6 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+FORCE:
+
+.PHONY: all clean fclean re FORCE
