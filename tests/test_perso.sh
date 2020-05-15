@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if (( $# != 2 )) ; then
-	echo "Usage : script_test stack_length number_of_tests"
+	echo "Usage : ./test_perso.sh stack_size number_of_tests"
 	exit 1 
 fi
 

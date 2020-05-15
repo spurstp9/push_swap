@@ -95,7 +95,6 @@ $(OBJ_FOLDER)%.o:%.c $(HDR)
 clean:
 	@rm -rf $(OBJ)
 	@rm -rf $(OBJ_FOLDER)
-	@echo "Object files related to libft deleted"
 
 fclean: clean
 	@rm -rf $(NAME)

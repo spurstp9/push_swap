@@ -1,5 +1,5 @@
-CC = clang
-CFLAGS = -Wall -Wextra -Werror -Wpadded -fsanitize=address,undefined -g3
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 CHECKER_NAME = checker
 PUSH_SWAP_NAME = push_swap
 
@@ -79,6 +79,7 @@ clean:
 	@make -C $(LIB_FOLDER) clean
 	@rm -rf $(CHECKER_OBJ) $(PUSH_SWAP_OBJ)
 	@rm -rf $(OBJ_FOLDER)
+	@echo "Object files related to libft deleted"
 	@echo "Object files related to push_swap and checker deleted"
 
 fclean: clean
