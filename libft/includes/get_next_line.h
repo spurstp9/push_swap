@@ -22,7 +22,5 @@
 # define BUFF_SIZE 4
 
 int		get_next_line(const int fd, char **line);
-int		read_and_stock(const int fd, char **stock);
-int		free_and_return(char *str, int ret);
 
 #endif

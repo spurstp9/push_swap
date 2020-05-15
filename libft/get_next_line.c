@@ -12,13 +12,13 @@
 
 #include "includes/get_next_line.h"
 
-int	free_and_return(char *str, int ret)
+static int	free_and_return(char *str, int ret)
 {
 	ft_strdel(&str);
 	return (ret);
 }
 
-int	read_and_stock(const int fd, char **stock)
+static int	read_and_stock(const int fd, char **stock)
 {
 	char	*buffer;
 	char	*tmp;
@@ -46,7 +46,7 @@ int	read_and_stock(const int fd, char **stock)
 	return (free_and_return(buffer, ret));
 }
 
-int	get_next_line(const int fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
 	static char	*stock[_SC_OPEN_MAX];
 	char		*tmp;
