@@ -12,7 +12,7 @@ LIB = $(addprefix $(LIB_FOLDER), $(LIB_NAME))
 SRC_FOLDER = ./src/
 OBJ_FOLDER = ./obj/
 SRC_FILES = apply_instr.c check_args.c check_args2.c check_instr.c check_order.c \
-				check_stdin.c chunk_sort.c chunk_sort2.c ft_p.c ft_r.c ft_rr.c ft_s.c \
+				chunk_sort.c chunk_sort2.c ft_p.c ft_r.c ft_rr.c ft_s.c \
 				main_checker.c main_push_swap.c replace_values_by_rank.c selection_sort.c \
 				sort_last_three.c utils.c utils2.c
 SRC = $(addprefix $(SRC_FOLDER), $(SRC_FILES))
